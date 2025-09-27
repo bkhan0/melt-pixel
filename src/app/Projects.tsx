@@ -1,27 +1,49 @@
-"use client"
+"use client";
 import Image, { StaticImageData } from "next/image";
 
-import p1 from "../../public/ax-portfolio-01.webp"
-import p2 from "../../public/ax-portfolio-02.webp"
-import p3 from "../../public/ax-portfolio-03.webp"
-import p4 from "../../public/ax-portfolio-04.webp"
-import p5 from "../../public/ax-portfolio-05.webp"
-import p6 from "../../public/ax-portfolio-06.webp"
+import p1 from "../../public/ax-portfolio-01.webp";
+import p2 from "../../public/ax-portfolio-02.webp";
+import p3 from "../../public/ax-portfolio-03.webp";
+import p4 from "../../public/ax-portfolio-04.webp";
+import p5 from "../../public/ax-portfolio-05.webp";
+import p6 from "../../public/ax-portfolio-06.webp";
 import { useEffect, useState } from "react";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [hovering, setHovering] = useState(false);
 
-    const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-    const [hovering, setHovering] = useState(false);
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", moveCursor);
+    return () => window.removeEventListener("mousemove", moveCursor);
+  }, []);
 
-    useEffect(() => {
-        const moveCursor = (e: MouseEvent) => {
-        setCursorPos({ x: e.clientX, y: e.clientY });
-        };
-        window.addEventListener("mousemove", moveCursor);
-        return () => window.removeEventListener("mousemove", moveCursor);
-    }, []);
+  useEffect(() => {
+    // Animate each card separately
+    gsap.utils.toArray(".project-card").forEach((el: any) => {
+      gsap.fromTo(
+        el,
+        { scale: 0.95 },
+        {
+          scale: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: true,
+          },
+        }
+      );
+    });
+  }, []);
 
   return (
     <div className="relative">
@@ -29,7 +51,7 @@ export default function Projects() {
         {projectData.map((project, idx) => (
           <div
             key={idx}
-            className="relative group cursor-none" // hides system cursor while hovering
+            className="relative group cursor-none project-card" // ✅ class on each card
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
           >
@@ -50,10 +72,10 @@ export default function Projects() {
       {hovering && (
         <div
           className="fixed z-50 pointer-events-none flex items-center justify-center 
-          w-36 h-12 rounded-full bg-white text-black"
+          w-36 h-12 rounded-full bg-white text-black shadow-lg"
           style={{
-            top: cursorPos.y - 56, // center the circle
-            left: cursorPos.x - 56,
+            top: cursorPos.y - 28, // centers better
+            left: cursorPos.x - 72,
           }}
         >
           View Project
@@ -62,7 +84,6 @@ export default function Projects() {
     </div>
   );
 }
-
 
 interface Project {
   img: StaticImageData;

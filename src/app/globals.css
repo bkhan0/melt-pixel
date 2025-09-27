@@ -1,2 +1,13 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+:root {
+  --green: #4cb64a;
+  --blue: #3687e2;
+  --yellow: #f1bc22;
+  --red: #dd4f2b;
+}
+
+body {
+  background: black !important;
+}
