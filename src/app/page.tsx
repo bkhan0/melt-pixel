@@ -34,7 +34,7 @@ export default function Home() {
       <div className="">
         <section className="container h-[100vh] mx-auto px-6 pt-32">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-            <div className="md:col-span-8 flex pe-32">
+            <div className="md:col-span-8 flex ppr-10 md:pr-32">
               <div className="flex flex-col">
                 <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
                 <span className="-ms-4 my-2 h-22">
@@ -49,7 +49,7 @@ export default function Home() {
                 </span>
                 <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
               </div>
-              <h1 className="text-8xl font-semibold leading-none ms-28 items-center gap-2">
+              <h1 className="text-5xl md:text-8xl font-semibold leading-none ml-10 md:ml-28 items-center gap-2">
                 Let&apos;s sharpen your brand with
                 <span className="inline-flex w-8 h-8">
                   <Image
@@ -89,27 +89,27 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <div className="p-28 bg-black/90">
+      <div className="p-10 md:p-28 bg-black/90">
         <div className="w-full h-[60vh] flex relative">
           <span className="border-t-1 border-s-1 w-4 h-4 absolute top-0 start-0"></span>
           <span className="border-t-1 border-e-1 w-4 h-4 absolute top-0 end-0"></span>
           <span className="border-b-1 border-e-1 w-4 h-4 absolute bottom-0 end-0"></span>
           <span className="border-b-1 border-s-1 w-4 h-4 absolute bottom-0 start-0"></span>
           <div className="mx-auto my-auto flex flex-col ">
-            <h1
-              className="text-[18rem] font-bold text-center top-[-70vh] absolute w-full z-10 text-[var(--blue)]"
+            {/* <h1
+              className="font-bold text-center top-[-70vh] absolute w-full z-10 text-[var(--blue)]"
               ref={title_ref}
             >
               Melt Pixel
-            </h1>
-            <h3 className="text-xl w-[50%] mx-auto text-center">
+            </h1> */}
+            <h3 className="text-xl md:w-[50%] mx-auto text-center">
               We’re a dynamic startup agency specializing in innovative
               solutions for businesses looking to elevate their brand presence.
               We offer a range of services including digital marketing,
               branding, web development, and creative strategy to help company
             </h3>
             <div className="mx-auto">
-              <button className="-mb-28 mt-18 bg-white text-black btn rounded-full w-40 h-14">
+              <button className="-mb-28 bg-white text-black btn rounded-full w-40 h-14">
                 learn more
               </button>
             </div>
@@ -154,7 +154,7 @@ export default function Home() {
           </div>
         </div>
         <div className="container mx-auto mt-20">
-          <h1 className="text-9xl leading-none font-semibold pb-10 pt-20">
+          <h1 className="text-7xl md:text-9xl ms-10 md:ms-0 leading-none font-semibold pb-10 pt-20">
             Complex <br /> proficiency
           </h1>
           <div>
@@ -162,43 +162,42 @@ export default function Home() {
           </div>
         </div>
         <div className="relative">
-          <span className="absolute w-10 h-full start-[46%] border-s border-gray-800 border-e -z-10-1"></span>
-          <span className="absolute w-10 h-full start-[72%] border-s border-gray-800 border-e -z-10-1"></span>
+          <span className="hidden md:block absolute w-10 h-full start-[46%] border-s border-gray-800 border-e -z-10-1"></span>
+          <span className="hidden md:block absolute w-10 h-full start-[72%] border-s border-gray-800 border-e -z-10-1"></span>
           <div className="container mx-auto mt-44 pt-44">
-            <span className="w-1 h-full"></span>
-            <div className="flex flex-row">
-              <div className="w-[46%]">
-                <h1 className="text-8xl font-bold">
+            <div className="ms-4 md:ms-0 flex flex-col md:flex-row">
+              <div className="md:w-[46%]">
+                <h1 className=" text-7xl md:text-8xl mb-10 font-bold">
                   Perfect <br /> —activity
                 </h1>
               </div>
-              <div className=" w-[54%] flex flex-col">
-                <div className="pb-44 w-[60%] pe-10 z-10">
-                  <h1 className="text-8xl font-bold pb-4">1.8M</h1>
+              <div className="pb-10 md:pb-44 z-10 md:w-[54%]">
+                <div className="pb-10 md:pb-44 md:w-[60%] z-10 pe-10">
+                  <h1 className="text-6xl md:text-8xl font-bold pb-4">1.8M</h1>
                   <p className="text-xl text-gray-500">
                     We helped to get companies with $200M+ funding.
                   </p>
                 </div>
-                <div className="ms-auto pb-44 w-[40%] z-10">
-                  <h1 className="text-8xl font-bold pb-4 leading-none">260+</h1>
+                <div className="pb-10 md:pb-44 z-10 ml-0 md:ml-auto md:w-[40%] ">
+                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">260+</h1>
                   <p className="text-xl text-gray-500">
                     Crafted responsive, user-centered website & app.
                   </p>
                 </div>
-                <div className="pb-44 w-[60%] pe-10 z-10">
-                  <h1 className="text-8xl font-bold pb-4 leading-none">12+</h1>
+                <div className="pb-10 md:pb-44 z-10 md:w-[60%] md:pe-10">
+                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">12+</h1>
                   <p className="text-xl text-gray-500">
                     We have had quite a run in our 12+ years of working.
                   </p>
                 </div>
-                <div className="ms-auto pb-44 w-[40%] z-10">
-                  <h1 className="text-8xl font-bold pb-4 leading-none">80+</h1>
+                <div className="pb-10 md:pb-44 z-10 ml-0 md:ml-auto  md:w-[40%] ">
+                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">80+</h1>
                   <p className="text-xl text-gray-500">
                     Professional skilled designers and developers.
                   </p>
                 </div>
-                <div className="pb-44 w-[50%] z-10">
-                  <h1 className="text-8xl font-bold pb-4 leading-none">99%</h1>
+                <div className="pb-10 md:pb-44 md:w-[50%] z-10">
+                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">99%</h1>
                   <p className="text-xl text-gray-500">
                     Average 99% client satisfaction with expertise.
                   </p>
@@ -209,11 +208,11 @@ export default function Home() {
         </div>
         <div className="h-[100vh] mt-58">
           <div className="container mx-auto">
-            <h1 className="text-8xl font-black pe-20">
+            <h1 className="text-5xl md:text-8xl ms-5 font-black pe-20">
               <span className="text-orange-600 font-semibold">Client:</span>{" "}
               Helping brands to grow and say their success stories to the world.
             </h1>
-            <h2 className="text-xl font-semibold text-gray-500 w-[30%] text-justify mx-auto my-44">
+            <h2 className="text-xl font-semibold text-gray-500 w-[90%] md:w-[30%] text-justify mx-auto my-10 md:my-44">
               We’re a great team of creatives with a strongest capabilities to
               helping progressive fields achieve their goals. With the best
               talent on every project done successfully
@@ -227,8 +226,8 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="p-56">
-          <h1 className="text-[100px] leading-none text-center font-bold">
+        <div className="py-30 px-4 md:p-56">
+          <h1 className="text-5xl md:text-[100px] leading-none text-center font-bold">
             It&apos;s all about the <br />
             unique <span className="text-gray-700">thinking</span> with{" "}
             <span className="text-gray-700">creativity</span> and{" "}

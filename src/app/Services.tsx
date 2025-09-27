@@ -46,19 +46,19 @@ const data: Data[] = [
 
 function Services() {
   return (
-   <div className="space-y-10 mt-10">
+   <div className="space-y-10 mt-10 mx-5 mx-0">
   {data.map((item) => (
     <div
       key={item.number}
       className="border-t border-gray-700 pt-8 grid grid-cols-12 gap-6 "
     >
       {/* Number */}
-      <div className="col-span-5 text-4xl font-bold">
+      <div className="col-span-12 md:col-span-5 text-4xl font-bold">
         ({item.number})
       </div>
 
       {/* Category & Subcategories */}
-      <div className="col-span-3">
+      <div className="col-span-12 md:col-span-3">
         <h2 className="mb-4 text-3xl font-semibold">{item.category}</h2>
         <ul className="list-none space-y-1">
           {item.subCategories.map((sub, idx) => (
@@ -68,12 +68,12 @@ function Services() {
       </div>
 
       {/* Image */}
-      <div className="col-span-4 w-full h-64 relative">
+      <div className="col-span-12 md:col-span-4 w-full ps-10 h-64 relative">
         <Image
           src={item.img}
           alt={item.category}
           fill
-          className="object-cover rounded-xl"
+          className="object-cover w-[90%] md:w-auto rounded-xl"
         />
       </div>
     </div>
