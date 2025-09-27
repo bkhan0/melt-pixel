@@ -1,103 +1,186 @@
+"use client"
 import Image from "next/image";
+import Marquee from "./Marquee"
+import Projects from "./Projects";
+import Services from "./Services";
+import logo from "../../public/melt-pixel-logo.jpg"
+import Link from "next/link";
+import parallex from "../../public/ax-parallax-image-01.webp";
+import Footer from "./footer";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+ 
+  return (<>
+   <div className="">
+     <main className="container h-[100vh] mx-auto px-6 mt-32">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div className="md:col-span-8 flex pe-32">
+          <div className="flex flex-col">
+            <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
+            <span className="-ms-4 my-2 h-22">skibid</span>
+            <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
+          </div>
+          <h1 className="text-8xl font-semibold leading-none ms-28 items-center gap-2">
+            Let&apos;s sharpen your brand with
+            <span className="inline-flex w-8 h-8">
+              <Image alt="Melt-Pixel" src={logo} width={90} height={90} />
+            </span>
+            quality work
+          </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <aside className="md:col-span-4">
+          <div className="flex gap-4">
+            <div className="flex-1">
+              <div className="text-7xl font-medium">98%</div>
+              <div className="text-md py-4 text-white">Average clients satisfied and repeating</div>
+            </div>
+
+            <div className="flex-1">
+              <div className="text-7xl font-medium">120+</div>
+              <div className="text-md py-4 text-white">Successfully projects done in 24 countries</div>
+            </div>
+          </div>
+          <div className="w-full bg-gray-500 h-[1px] mt-6 mb-16"></div>
+          <div className="text-xl text-white">We’re a digital products design & development agency that works passionately with the digital experiences.</div>
+
+        </aside>
+      </div>
+      <h1 className="text-[18rem] font-bold text-center">
+        Melt Pixel
+      </h1>
+    </main>
+   </div>
+   <div className="p-28 bg-black/90">
+      <div className="w-full h-[60vh] flex relative">
+        <span className="border-t-1 border-s-1 w-4 h-4 absolute top-0 start-0"></span>
+        <span className="border-t-1 border-e-1 w-4 h-4 absolute top-0 end-0"></span>
+        <span className="border-b-1 border-e-1 w-4 h-4 absolute bottom-0 end-0"></span>
+        <span className="border-b-1 border-s-1 w-4 h-4 absolute bottom-0 start-0"></span>
+        <div className="mx-auto my-auto flex flex-col">
+          <h3 className="text-xl w-[50%] mx-auto text-center">
+          We’re a dynamic startup agency specializing in innovative solutions for businesses looking to elevate their brand presence. We offer a range of services including digital marketing, branding, web development, and creative strategy to help company
+        </h3>
+        <div className="mx-auto">
+            <button className="-mb-28 mt-18 bg-white text-black btn rounded-full w-40 h-14">learn more</button>
+        </div>
+        </div>
+      </div>
+   </div>
+   <div className="h-[100vh]">
+      <video
+        className="w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/group-meeting.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+   </div>
+  <Marquee duration={100}>
+    <span>Creative</span>
+    <span className="w-2.5 h-2.5 mx-8 mb-1 rounded-full bg-white inline-block" />
+    <span>Design</span>
+    <span className="w-2.5 h-2.5 mx-8 mb-1 rounded-full bg-white inline-block" />
+    <span>Strategy</span>
+    <span className="w-2.5 h-2.5 mx-8 mb-1 rounded-full bg-white inline-block" />
+    <span>Innovation</span>
+    <span className="w-2.5 h-2.5 mx-8 mb-1 rounded-full bg-white inline-block" />
+
+  </Marquee>
+   <div>
+    <div className="w-full h-2 border-t-1 border-b-1 border-gray-900"></div>
+    <div className="container my-10 mx-auto w-full *:text-white">
+      <div className="flex justify-between mb-10 text-lg">
+        <span>Featured Work</span>
+        <span>Excellency in creative designs</span>
+        <span>(26)</span>
+      </div>
+      <Projects />
+      <div className="text-center">
+        <button className="-mb-28 mt-18 btn btn-outline rounded-full w-40 h-14">View All Work</button>
+      </div>
     </div>
+    <div className="container mx-auto mt-20">
+      <h1 className="text-9xl leading-none font-semibold pb-10 pt-20">
+        Complex <br /> proficiency
+      </h1>
+      <div>
+        <Services />
+      </div>
+    </div>
+    <div className="relative">
+        <span className="absolute w-10 h-full start-[46%] border-s border-gray-800 border-e -z-10-1"></span>
+        <span className="absolute w-10 h-full start-[72%] border-s border-gray-800 border-e -z-10-1"></span>
+        <div className="container mx-auto mt-44 pt-44">
+        <span className="w-1 h-full"></span>
+        <div className="flex flex-row">
+        <div className="w-[46%]">
+          <h1 className="text-8xl font-bold">
+          Perfect <br /> —activity
+        </h1>
+        </div>
+        <div className=" w-[54%] flex flex-col">
+          <div className="pb-44 w-[60%] pe-10 z-10">
+            <h1 className="text-8xl font-bold pb-4">1.8M</h1>
+            <p className="text-xl text-gray-500">We helped to get companies with $200M+ funding.</p>
+          </div>
+          <div className="ms-auto pb-44 w-[40%] z-10">
+            <h1 className="text-8xl font-bold pb-4 leading-none">260+</h1>
+            <p className="text-xl text-gray-500">Crafted responsive, user-centered website & app.</p>
+          </div>
+          <div className="pb-44 w-[60%] pe-10 z-10">
+            <h1 className="text-8xl font-bold pb-4 leading-none">12+</h1>
+            <p className="text-xl text-gray-500">We have had quite a run in our 12+ years of working.</p>
+          </div>
+          <div className="ms-auto pb-44 w-[40%] z-10">
+            <h1 className="text-8xl font-bold pb-4 leading-none">80+</h1>
+            <p className="text-xl text-gray-500">Professional skilled designers and developers.</p>
+          </div>
+          <div className="pb-44 w-[50%] z-10">
+            <h1 className="text-8xl font-bold pb-4 leading-none">99%</h1>
+            <p className="text-xl text-gray-500">Average 99% client satisfaction with expertise.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div className="h-[100vh] mt-58">
+      <div className="container mx-auto">
+        <h1 className="text-8xl font-black pe-20">
+          <span className="text-orange-600 font-semibold">Client:</span> Helping brands to grow and say their success stories to the world.
+        </h1>
+        <h2 className="text-xl font-semibold text-gray-500 w-[30%] text-justify mx-auto my-44">
+          We’re a great team of creatives with a strongest capabilities to helping progressive fields achieve their goals. With the best talent on every project done successfully
+        </h2>
+      </div>
+    </div>
+    <div className="h-[100vh] flex items-center justify-center">
+      <div className="rounded-full h-96 w-96 bg-orange-500 flex items-center justify-center">
+        <Link href="#" className="text-5xl font-extrabold text-white">
+          LET&apos;S WORK
+        </Link>
+      </div>
+    </div>
+    <div className="p-56">
+      <h1 className="text-[100px] leading-none text-center font-bold"> 
+        It&apos;s all about the <br />
+        unique <span className="text-gray-700">thinking</span> with <span className="text-gray-700">creativity</span> and <span className="text-gray-700">quality</span> for complex solution in <br />
+        easy way
+      </h1>
+    </div>
+    <div
+      className="h-[80vh] bg-fixed bg-center bg-cover"
+      style={{ backgroundImage: `url(${parallex.src})` }}
+    >
+    </div>
+    <Footer />
+
+    
+   </div>
+   </>
   );
 }
