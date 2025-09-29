@@ -29,14 +29,14 @@ export default function Projects() {
     gsap.utils.toArray(".project-card").forEach((el: any) => {
       gsap.fromTo(
         el,
-        { scale: 0.95 },
+        { scale: 0.90 },
         {
           scale: 1,
-          duration: 1.2,
+          duration: 2,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 80%",
+            start: "top 100%",
             end: "top 40%",
             scrub: true,
           },

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Image, { StaticImageData } from 'next/image'
 import p1 from "../../public/ax-service-01.webp"
 import p2 from "../../public/ax-service-02.webp"
 import p3 from "../../public/ax-service-03.webp"
 import p4 from "../../public/ax-service-04.webp"
+import gsap from "gsap";
 
 interface Data {
   number: string
@@ -45,7 +46,28 @@ const data: Data[] = [
 ]
 
 function Services() {
-  return (
+    useEffect(() => {
+        // Animate each card separately
+        gsap.utils.toArray(".service-card-image").forEach((el: any) => {
+            gsap.fromTo(
+                el,
+                { width: 100, transformOrigin: "right center" },
+                {
+                    width: 500,
+                    duration: 5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 100%",
+                        end: "top 40%",
+                        scrub: true,
+                    },
+                }
+            );
+        });
+    }, []);
+
+    return (
    <div className="space-y-10 mt-10 mx-5 mx-0">
   {data.map((item) => (
     <div
@@ -68,12 +90,12 @@ function Services() {
       </div>
 
       {/* Image */}
-      <div className="col-span-12 md:col-span-4 w-full ps-10 h-64 relative">
+      <div className="col-span-12 service-card-image md:col-span-4 w-full ps-10 h-64 relative">
         <Image
           src={item.img}
           alt={item.category}
           fill
-          className="object-cover w-[90%] md:w-auto rounded-xl"
+          className="object-cover w-[500px] md:w-auto rounded-xl"
         />
       </div>
     </div>

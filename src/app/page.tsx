@@ -10,25 +10,31 @@ import parallex from "../../public/ax-parallax-image-01.webp";
 import Footer from "./footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import {Timeline} from "@/app/Timeline";
+import {CircleExpand} from "@/app/CircleExpand";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const title_ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    gsap.to(title_ref.current, {
-      fontSize: "5rem",
-      duration: 2,
-      ease: "power2.in",
-      top: "10vh",
-      color: "white",
-      scrollTrigger: {
-        trigger: title_ref.current,
-        start: "top 20%",
-        end: "bottom bottom",
-        scrub: 2,
-      },
-    });
+      gsap.to(title_ref.current, {
+          fontSize: "80px",
+          top: "10vh",
+          color: "white",
+          ease: "power2.inOut",
+          scrollTrigger: {
+              trigger: title_ref.current,
+              start: "top 50%",
+              scrub: 1,
+          },
+      });
+
+      setTimeout(() => {
+
+          ScrollTrigger.refresh();
+  }, 50)
   }, []);
+
   return (
     <>
       <div className="">
@@ -96,12 +102,12 @@ export default function Home() {
           <span className="border-b-1 border-e-1 w-4 h-4 absolute bottom-0 end-0"></span>
           <span className="border-b-1 border-s-1 w-4 h-4 absolute bottom-0 start-0"></span>
           <div className="mx-auto my-auto flex flex-col ">
-            {/* <h1
-              className="font-bold text-center top-[-70vh] absolute w-full z-10 text-[var(--blue)]"
+            <h1
+              className="font-bold text-center text-[90px] md:text-[280px] top-[-65vh] absolute w-full z-10 text-[var(--blue)]"
               ref={title_ref}
             >
               Melt Pixel
-            </h1> */}
+            </h1>
             <h3 className="text-xl md:w-[50%] mx-auto text-center">
               We’re a dynamic startup agency specializing in innovative
               solutions for businesses looking to elevate their brand presence.
@@ -161,51 +167,7 @@ export default function Home() {
             <Services />
           </div>
         </div>
-        <div className="relative">
-          <span className="hidden md:block absolute w-10 h-full start-[46%] border-s border-gray-800 border-e -z-10-1"></span>
-          <span className="hidden md:block absolute w-10 h-full start-[72%] border-s border-gray-800 border-e -z-10-1"></span>
-          <div className="container mx-auto mt-44 pt-44">
-            <div className="ms-4 md:ms-0 flex flex-col md:flex-row">
-              <div className="md:w-[46%]">
-                <h1 className=" text-7xl md:text-8xl mb-10 font-bold">
-                  Perfect <br /> —activity
-                </h1>
-              </div>
-              <div className="pb-10 md:pb-44 z-10 md:w-[54%]">
-                <div className="pb-10 md:pb-44 md:w-[60%] z-10 pe-10">
-                  <h1 className="text-6xl md:text-8xl font-bold pb-4">1.8M</h1>
-                  <p className="text-xl text-gray-500">
-                    We helped to get companies with $200M+ funding.
-                  </p>
-                </div>
-                <div className="pb-10 md:pb-44 z-10 ml-0 md:ml-auto md:w-[40%] ">
-                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">260+</h1>
-                  <p className="text-xl text-gray-500">
-                    Crafted responsive, user-centered website & app.
-                  </p>
-                </div>
-                <div className="pb-10 md:pb-44 z-10 md:w-[60%] md:pe-10">
-                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">12+</h1>
-                  <p className="text-xl text-gray-500">
-                    We have had quite a run in our 12+ years of working.
-                  </p>
-                </div>
-                <div className="pb-10 md:pb-44 z-10 ml-0 md:ml-auto  md:w-[40%] ">
-                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">80+</h1>
-                  <p className="text-xl text-gray-500">
-                    Professional skilled designers and developers.
-                  </p>
-                </div>
-                <div className="pb-10 md:pb-44 md:w-[50%] z-10">
-                  <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">99%</h1>
-                  <p className="text-xl text-gray-500">
-                    Average 99% client satisfaction with expertise.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Timeline />
         <div className="h-[100vh] mt-58">
           <div className="container mx-auto">
             <h1 className="text-5xl md:text-8xl ms-5 font-black pe-20">
@@ -219,13 +181,7 @@ export default function Home() {
             </h2>
           </div>
         </div>
-        <div className="h-[100vh] flex items-center justify-center">
-          <div className="rounded-full h-96 w-96 bg-orange-500 flex items-center justify-center">
-            <Link href="#" className="text-5xl font-extrabold text-white">
-              LET&apos;S WORK
-            </Link>
-          </div>
-        </div>
+        <CircleExpand />
         <div className="py-30 px-4 md:p-56">
           <h1 className="text-5xl md:text-[100px] leading-none text-center font-bold">
             It&apos;s all about the <br />
