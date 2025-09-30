@@ -171,7 +171,7 @@ export default function Home() {
         <div className="h-[100vh] mt-58">
           <div className="container mx-auto">
             <h1 className="text-5xl md:text-8xl ms-5 font-black pe-20">
-              <span className="text-orange-600 font-semibold">Client:</span>{" "}
+              <span className="text-[var(--blue)] font-semibold">Client:</span>{" "}
               Helping brands to grow and say their success stories to the world.
             </h1>
             <h2 className="text-xl font-semibold text-gray-500 w-[90%] md:w-[30%] text-justify mx-auto my-10 md:my-44">

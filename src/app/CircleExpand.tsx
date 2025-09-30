@@ -54,7 +54,7 @@ export const CircleExpand = () => {
                 <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
                     <div
                         ref={orangeRef}
-                        className="absolute rounded-full h-96 w-96 bg-orange-500"
+                        className="absolute rounded-full h-96 w-96 bg-[var(--blue)]"
                         style={{ zIndex: 10, willChange: "transform" }}
                     />
 
