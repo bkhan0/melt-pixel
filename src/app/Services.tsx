@@ -51,18 +51,18 @@ function Services() {
         gsap.utils.toArray(".service-card-image").forEach((el: any) => {
             gsap.fromTo(
                 el,
-                { width: 100, transformOrigin: "right center" },
+                { width: "20%" },
                 {
-                    width: 500,
+                    width: "100%",
                     duration: 5,
                     ease: "power2.out",
                     scrollTrigger: {
                         trigger: el,
-                        start: "top 100%",
-                        end: "top 40%",
+                        start: "top 90%",
+                        end: "top top",
                         scrub: true,
                     },
-                }
+                },
             );
         });
     }, []);
@@ -75,13 +75,13 @@ function Services() {
       className="border-t border-gray-700 pt-8 grid grid-cols-12 gap-6 "
     >
       {/* Number */}
-      <div className="col-span-12 md:col-span-5 text-4xl font-bold">
+      <div className="col-span-12 md:col-span-4 text-4xl font-bold">
         ({item.number})
       </div>
 
       {/* Category & Subcategories */}
       <div className="col-span-12 md:col-span-3">
-        <h2 className="mb-4 text-3xl font-semibold">{item.category}</h2>
+        <h2 className="mb-4 text-2xl lg:text-3xl font-semibold">{item.category}</h2>
         <ul className="list-none space-y-1">
           {item.subCategories.map((sub, idx) => (
             <li key={idx}>{sub}</li>
@@ -90,7 +90,7 @@ function Services() {
       </div>
 
       {/* Image */}
-      <div className="col-span-12 service-card-image md:col-span-4 w-full ps-10 h-64 relative">
+      <div className="col-span-12 md:col-span-6 xl:col-span-5 service-card-image  w-full ps-10 h-64 relative">
         <Image
           src={item.img}
           alt={item.category}

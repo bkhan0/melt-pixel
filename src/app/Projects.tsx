@@ -29,9 +29,9 @@ export default function Projects() {
     gsap.utils.toArray(".project-card").forEach((el: any) => {
       gsap.fromTo(
         el,
-        { scale: 0.90 },
+        { scale: 0.88 },
         {
-          scale: 1,
+          scale: 0.95,
           duration: 2,
           ease: "power2.out",
           scrollTrigger: {
@@ -47,7 +47,7 @@ export default function Projects() {
 
   return (
     <div className="relative">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 gap-y-10">
         {projectData.map((project, idx) => (
           <div
             key={idx}
@@ -72,7 +72,7 @@ export default function Projects() {
       {hovering && (
         <div
           className="fixed z-50 pointer-events-none flex items-center justify-center 
-          w-36 h-12 rounded-full bg-white text-black shadow-lg"
+          w-36 h-12 rounded-full bg-white text-black shadow-lg transition"
           style={{
             top: cursorPos.y - 28, // centers better
             left: cursorPos.x - 72,

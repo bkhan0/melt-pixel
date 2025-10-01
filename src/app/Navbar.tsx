@@ -91,7 +91,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="absolute top-16 left-0 w-full bg-gray-900/80 backdrop-blur-lg text-white px-6 py-6 space-y-4 shadow-xl"
+            className="absolute top-16 left-0 right-0 bg-gray-900/80 backdrop-blur-lg text-white px-6 py-6 space-y-4 shadow-xl"
           >
             <a href="#" className="block hover:text-gray-300">Home</a>
             <div>

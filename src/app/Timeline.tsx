@@ -59,7 +59,7 @@ export const Timeline = () => {
                 <div className="ms-4 md:ms-0 flex flex-col md:flex-row">
                     {/* Left side (pinned title) */}
                     <div ref={titleRef} className="md:w-[46%]">
-                        <h1 className="text-7xl pinned-text md:text-8xl font-bold">
+                        <h1 className="text-7xl pinned-text lg:text-8xl font-bold">
                             Perfect <br /> —activity
                         </h1>
                     </div>

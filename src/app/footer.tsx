@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="text-gray-300 justify-between pt-10">
   {/* Top Section */}
-  <div className="container mx-auto w-full px-6 pt-28 pb-24 grid grid-cols-11 md:grid-cols-12 gap-y-10 md:gap-12">
+  <div className="container mx-auto w-full px-6 pt-28 pb-24 grid grid-cols-12 gap-y-10 md:gap-12">
     {/* Left: Logo + Description */}
     <div className='col-span-12 md:col-span-7'>
       <div className="flex items-center space-x-3">
@@ -31,7 +31,7 @@ function Footer() {
 
     </div>
     <hr className="border-gray-800 col-span-12 mb-14 mt-8" />
-     <div className='col-span-12  md:col-span-7'>
+    <div className='col-span-12  md:col-span-7'>
         <form className="flex items-center bg-gray-900 rounded-full overflow-hidden max-w-lg">
         <input
           type="email"
@@ -50,8 +50,7 @@ function Footer() {
         <a href="#" className="underline">Privacy Policy</a>
       </p>
     </div>
-   
-        <div className="col-span-12  md:col-span-5 flex gap-20 md:gap-40">
+    <div className="col-span-12  md:col-span-5 flex justify-between">
   {/* Company */}
   <div>
     <h3 className="mb-3 font-semibold text-xl text-gray-300">Company</h3>
@@ -97,13 +96,11 @@ function Footer() {
     </ul>
   </div>
 </div>
-
-    
   </div>
-<hr className="border-gray-800" />
+  <hr className="border-gray-800" />
   <div className="flex items-center justify-center py-10 text-xl text-gray-500">
       <p>© 2025 MaltPixel. All rights reserved</p>
-    </div>
+  </div>
 </footer>
 
   )

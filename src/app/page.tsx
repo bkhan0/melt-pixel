@@ -5,42 +5,116 @@ import Marquee from "./Marquee";
 import Projects from "./Projects";
 import Services from "./Services";
 import logo from "../../public/meltpixel.png";
-import Link from "next/link";
 import parallex from "../../public/ax-parallax-image-01.webp";
 import Footer from "./footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import {Timeline} from "@/app/Timeline";
 import {CircleExpand} from "@/app/CircleExpand";
+import MatterScene from "@/app/MatterScene";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const title_ref = useRef<HTMLHeadingElement>(null);
-  useEffect(() => {
-      gsap.to(title_ref.current, {
-          fontSize: "80px",
-          top: "10vh",
-          color: "white",
-          ease: "power2.inOut",
-          scrollTrigger: {
-              trigger: title_ref.current,
-              start: "top 50%",
-              scrub: 1,
-          },
-      });
+    const gravityElements = [
+        { id: 1, type: 'rectangle' as const, text: 'Hello' },
+        { id: 2, type: 'circle' as const, text: 'Gravity' },
+        { id: 3, type: 'pill' as const, text: 'Fun!' },
+        // Add more elements here
+    ];
 
-      setTimeout(() => {
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
-          ScrollTrigger.refresh();
-  }, 50)
-  }, []);
+        if (!title_ref.current) return;
 
-  return (
+        const mm = ScrollTrigger.matchMedia({
+            // Mobile: default (<768px)
+            "(max-width: 767px)": () => {
+                gsap.set(title_ref.current!, {
+                    fontSize: "50px",
+                    top: "6vh",
+                    color: "white",
+                });
+            },
+
+            // Small/Medium screens (768px - 1023px) → md
+            "(min-width: 768px) and (max-width: 1023px)": () => {
+                gsap.fromTo(
+                    title_ref.current!,
+                    { fontSize: "150px", top: "-55vh" },
+                    {
+                        fontSize: "70px",
+                        top: "5vh",
+                        color: "white",
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: title_ref.current!,
+                            start: "top 50%",
+                            end: "top 10%",
+                            scrub: 2,
+                        },
+                    }
+                );
+            },
+
+            // Large screens (1024px - 1279px) → lg
+            "(min-width: 1024px) and (max-width: 1279px)": () => {
+                gsap.fromTo(
+                    title_ref.current!,
+                    { fontSize: "200px", top: "-65vh" },
+                    {
+                        fontSize: "80px",
+                        top: "10vh",
+                        color: "white",
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: title_ref.current!,
+                            start: "top 50%",
+                            scrub: 1,
+                        },
+                    }
+                );
+            },
+
+            // Extra large screens (>=1280px) → xl
+            "(min-width: 1280px)": () => {
+                gsap.fromTo(
+                    title_ref.current!,
+                    { fontSize: "320px", top: "-70vh" },
+                    {
+                        fontSize: "100px",
+                        top: "10vh",
+                        color: "white",
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: title_ref.current!,
+                            start: "top 50%",
+                            scrub: 1,
+                        },
+                    }
+                );
+            },
+        });
+
+        // Refresh ScrollTrigger after mount
+        const timeout = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 50);
+
+        return () => {
+            clearTimeout(timeout);
+            mm.revert(); // clean up
+        };
+    }, []);
+
+
+    return (
     <>
       <div className="">
         <section className="container h-[100vh] mx-auto px-6 pt-32">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-            <div className="md:col-span-8 flex ppr-10 md:pr-32">
+            <div className="md:col-span-8 flex pr-10 lg:pr-32">
               <div className="flex flex-col">
                 <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
                 <span className="-ms-4 my-2 h-22">
@@ -55,7 +129,7 @@ export default function Home() {
                 </span>
                 <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
               </div>
-              <h1 className="text-5xl md:text-8xl font-semibold leading-none ml-10 md:ml-28 items-center gap-2">
+              <h1 className="text-5xl md:text-6xl font-semibold leading-none ml-10 md:ml-14 lg:ml-28 items-center gap-2">
                 Let&apos;s sharpen your brand with
                 <span className="inline-flex w-8 h-8">
                   <Image
@@ -73,14 +147,14 @@ export default function Home() {
             <aside className="md:col-span-4">
               <div className="flex gap-4">
                 <div className="flex-1">
-                  <div className="text-7xl font-medium">98%</div>
+                  <div className="text-6xl lg:text-8xl font-medium">98%</div>
                   <div className="text-md py-4 text-white">
                     Average clients satisfied and repeating
                   </div>
                 </div>
 
                 <div className="flex-1">
-                  <div className="text-7xl font-medium">120+</div>
+                  <div className="text-6xl lg:text-8xl font-medium">120+</div>
                   <div className="text-md py-4 text-white">
                     Successfully projects done in 24 countries
                   </div>
@@ -103,7 +177,7 @@ export default function Home() {
           <span className="border-b-1 border-s-1 w-4 h-4 absolute bottom-0 start-0"></span>
           <div className="mx-auto my-auto flex flex-col ">
             <h1
-              className="font-bold text-center text-[90px] md:text-[280px] top-[-65vh] absolute w-full z-10 text-[var(--blue)]"
+              className="font-bold text-center text-[90px] md:text-[280px] absolute w-full z-10 whitespace-nowrap text-[var(--blue)]"
               ref={title_ref}
             >
               Melt Pixel
@@ -122,9 +196,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-[100vh]">
+      <div className="h-[70vh] md:h-[100vh]">
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full overflow-hidden"
           autoPlay
           loop
           muted
@@ -160,7 +234,7 @@ export default function Home() {
           </div>
         </div>
         <div className="container mx-auto mt-20">
-          <h1 className="text-7xl md:text-9xl ms-10 md:ms-0 leading-none font-semibold pb-10 pt-20">
+          <h1 className="text-6xl md:text-9xl ml-5 md:ms-0 leading-none font-semibold pb-10 pt-20">
             Complex <br /> proficiency
           </h1>
           <div>
@@ -168,22 +242,64 @@ export default function Home() {
           </div>
         </div>
         <Timeline />
-        <div className="h-[100vh] mt-58">
+        <div className="h-[100vh] mt-58 mb-0 md:mb-96">
           <div className="container mx-auto">
-            <h1 className="text-5xl md:text-8xl ms-5 font-black pe-20">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl ms-5 font-black pe-20">
               <span className="text-[var(--blue)] font-semibold">Client:</span>{" "}
               Helping brands to grow and say their success stories to the world.
             </h1>
-            <h2 className="text-xl font-semibold text-gray-500 w-[90%] md:w-[30%] text-justify mx-auto my-10 md:my-44">
+            <h2 className="text-xl font-semibold text-gray-500 w-[90%] md:w-[60%] lg:w-[40%] xl:w-[30%] text-justify mx-auto my-10 md:my-44">
               We’re a great team of creatives with a strongest capabilities to
               helping progressive fields achieve their goals. With the best
               talent on every project done successfully
             </h2>
+              <div>
+                  <MatterScene containerHeightClass="h-[600px]" className="overflow-hidden">
+
+                      <div className="dm-matter-elem-pill absolute left-20 md:left-12 -top-[2100px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
+                          Trello
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-8 md:left-20 -top-[2400px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
+                          Nike
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-20 md:left-80 -top-[1900px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
+                          Adidas
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-12 md:left-80 -top-[2000px] px-10 py-4 text-xl bg-white rounded-full text-black">
+                          ThinkPad
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-16 md:left-150 -top-[1500px] px-10 py-4 text-xl bg-white rounded-full text-black">
+                          Asus Rocks
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-20 md:left-180 -top-[900px] px-10 py-4 text-xl bg-white rounded-full text-black">
+                          Acer
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-16 md:left-200 -top-[1300px] px-10 py-4 text-xl bg-white rounded-full text-black">
+                          Mac Book
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-6 md:left-230 -top-[2800px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
+                          HyperX
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-4 md:left-140 -top-[3000px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
+                          ThinkBook
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-240 -top-[200px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
+                          AttackShark
+                      </div>
+                  </MatterScene>
+              </div>
+              <div className="h-0.5 w-full bg-white mb-2"/>
+              <div className="h-0.5 w-full bg-white mb-2"/>
+              <div className="h-0.5 w-full bg-white mb-2"/>
+              <div className="h-0.5 w-full bg-white mb-2"/>
+
           </div>
         </div>
-        <CircleExpand />
-        <div className="py-30 px-4 md:p-56">
-          <h1 className="text-5xl md:text-[100px] leading-none text-center font-bold">
+          <div className="pt-96">
+              <CircleExpand />
+          </div>
+        <div className="py-30 px-4 md:p-32 lg:p-56">
+          <h1 className="text-5xl md:text-[80px] lg:text-[100px] leading-none text-center font-bold">
             It&apos;s all about the <br />
             unique <span className="text-gray-700">thinking</span> with{" "}
             <span className="text-gray-700">creativity</span> and{" "}
@@ -193,7 +309,7 @@ export default function Home() {
           </h1>
         </div>
         <div
-          className="h-[80vh] bg-fixed bg-center bg-cover"
+          className="h-[50vh] md:h-[80vh] bg-fixed bg-center bg-cover"
           style={{ backgroundImage: `url(${parallex.src})` }}
         ></div>
         <Footer />
