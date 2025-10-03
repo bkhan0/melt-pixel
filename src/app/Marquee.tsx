@@ -65,7 +65,7 @@ const Marquee = ({ children, duration = 5, containerClassName }: Props) => {
     x: ["0%", "-100%"],
     transition: {
       duration,
-      ease: "linear",
+      ease: "linear" as const,
       repeat: Infinity,
     },
   };

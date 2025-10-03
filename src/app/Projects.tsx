@@ -25,24 +25,23 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    // Animate each card separately
-    gsap.utils.toArray(".project-card").forEach((el: any) => {
-      gsap.fromTo(
-        el,
-        { scale: 0.88 },
-        {
-          scale: 0.95,
-          duration: 2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 100%",
-            end: "top 40%",
-            scrub: true,
-          },
-        }
-      );
-    });
+      gsap.utils.toArray<HTMLElement>(".project-card").forEach((el) => {
+          gsap.fromTo(
+              el,
+              { scale: 0.88 },
+              {
+                  scale: 0.95,
+                  duration: 2,
+                  ease: "power2.out",
+                  scrollTrigger: {
+                      trigger: el,
+                      start: "top 100%",
+                      end: "top 40%",
+                      scrub: true,
+                  },
+              }
+          );
+      });
   }, []);
 
   return (

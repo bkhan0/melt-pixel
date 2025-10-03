@@ -48,7 +48,7 @@ const data: Data[] = [
 function Services() {
     useEffect(() => {
         // Animate each card separately
-        gsap.utils.toArray(".service-card-image").forEach((el: any) => {
+        gsap.utils.toArray<HTMLElement>(".service-card-image").forEach((el) => {
             gsap.fromTo(
                 el,
                 { width: "20%" },

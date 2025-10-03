@@ -1,4 +1,6 @@
 import React from 'react'
+import Image from "next/image";
+import logo from "@/../public/MeltPixel icon.jpeg"
 
 function Footer() {
   return (
@@ -9,7 +11,9 @@ function Footer() {
     <div className='col-span-12 md:col-span-7'>
       <div className="flex items-center space-x-3">
         {/* Replace with your own logo */}
-        <div className="w-40 md:w-60 h-30 md:h-44 bg-white" />
+          <div className="w-40 md:w-60 h-26 md:h-44 ">
+              <Image src={logo} alt={logo.src} className="object-contain" />
+          </div>
         <h2 className="text-6xl md:text-7xl font-bold text-white">MeltPixel <br /> <span className="font-light">Agency</span></h2>
       </div>
     </div>
@@ -30,7 +34,7 @@ function Footer() {
         </a>
 
     </div>
-    <hr className="border-gray-800 col-span-12 mb-14 mt-8" />
+    <hr className="border-gray-800 col-span-12 my-14" />
     <div className='col-span-12  md:col-span-7'>
         <form className="flex items-center bg-gray-900 rounded-full overflow-hidden max-w-lg">
         <input

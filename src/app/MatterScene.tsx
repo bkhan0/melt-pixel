@@ -19,6 +19,13 @@ type Props = {
     containerHeightClass?: string;
 };
 
+interface ExtendedMouse extends Mouse {
+    mousewheel?: (event: Event) => void;
+    mousedown?: (e: Event) => void;
+    mousemove?: (e: Event) => void;
+    mouseup?: (e: Event) => void;
+}
+
 const MatterScene: React.FC<Props> = ({
                                           children,
                                           className = "",
@@ -200,8 +207,8 @@ const MatterScene: React.FC<Props> = ({
             }
 
             function createBoundaries() {
-                const w = box.clientWidth;
-                const h = box.clientHeight;
+                const w = box!.clientWidth;
+                const h = box!.clientHeight;
                 // use thin-but-catchy boundaries so objects don't slip out; they are invisible
                 const ground = Bodies.rectangle(w / 2, h + 10, w + 20, 20, {
                     isStatic: true,
@@ -266,8 +273,8 @@ const MatterScene: React.FC<Props> = ({
             // even when the cursor was over the matter-box. It removes the default
             // mousewheel handlers and attaches passive touch handlers.
             try {
-                const el = (mouseConstraint.mouse as any).element as HTMLElement | Document | null;
-                const mousewheelHandler = (mouseConstraint.mouse as any).mousewheel;
+                const el = (mouseConstraint.mouse as ExtendedMouse).element as HTMLElement | Document | null;
+                const mousewheelHandler = (mouseConstraint.mouse as ExtendedMouse).mousewheel;
                 if (el && mousewheelHandler) {
                     try { el.removeEventListener("mousewheel", mousewheelHandler as EventListener); } catch {}
                     try { el.removeEventListener("DOMMouseScroll", mousewheelHandler as EventListener); } catch {}
@@ -277,28 +284,35 @@ const MatterScene: React.FC<Props> = ({
                 // Touch handlers: re-add with passive touchstart so normal scrolling works
                 // and only forward touchmove/up when there is an active dragged body
                 try {
-                    const m = (mouseConstraint.mouse as any);
+                    const m = (mouseConstraint.mouse as ExtendedMouse);
                     if (el && m) {
-                        try { el.removeEventListener("touchstart", m.mousedown); } catch {}
-                        try { el.removeEventListener("touchmove", m.mousemove); } catch {}
-                        try { el.removeEventListener("touchend", m.mouseup); } catch {}
+                        try { el.removeEventListener("touchstart", m.mousedown as EventListener); } catch {}
+                        try { el.removeEventListener("touchmove", m.mousemove as EventListener); } catch {}
+                        try { el.removeEventListener("touchend", m.mouseup as EventListener ); } catch {}
                         // passive touchstart (lets scroll happen when not dragging)
-                        el.addEventListener("touchstart", m.mousedown, { passive: true } as AddEventListenerOptions);
+                        el.addEventListener("touchstart", m.mousedown as EventListener, { passive: true } as AddEventListenerOptions);
                         // only forward move/up while dragging a body (prevents blocking scroll)
-                        const touchMove = (e: TouchEvent) => {
-                            if (mouseConstraint.body) {
-                                m.mousemove(e);
-                                // prevent default only when dragging, so finger doesn't scroll page while dragging
-                                e.preventDefault();
-                            }
-                        };
-                        el.addEventListener("touchmove", touchMove as EventListener);
-                        el.addEventListener("touchend", (e: TouchEvent) => {
-                            if (mouseConstraint.body) {
-                                m.mouseup(e);
-                            }
-                        });
-                    }
+                        // touchmove wrapper
+                        if (m.mousemove) {
+                            const touchMove = ((e: Event) => {
+                                const te = e as TouchEvent;
+                                if (mouseConstraint.body) {
+                                    m.mousemove?.call(m, te as unknown as MouseEvent);
+                                    te.preventDefault();
+                                }
+                            }) as EventListener;
+                            el.addEventListener("touchmove", touchMove);
+                        }
+
+                        if (m.mouseup) {
+                            const touchEnd = ((e: Event) => {
+                                const te = e as TouchEvent;
+                                if (mouseConstraint.body) {
+                                    m.mouseup?.call(m, te as unknown as MouseEvent);
+                                }
+                            }) as EventListener;
+                            el.addEventListener("touchend", touchEnd);
+                        }                    }
                 } catch (err) {
                     // non-fatal if we couldn't adjust touch handlers
                 }
@@ -346,9 +360,8 @@ const MatterScene: React.FC<Props> = ({
                 Composite.clear(engine.world, true);
             } catch {}
             try {
-                // Engine.clear may or may not exist on the runtime; safe-call
-                if ((Engine as any).clear) {
-                    (Engine as any).clear(engine);
+                if (typeof Engine.clear === "function") {
+                    Engine.clear(engine);
                 }
             } catch {}
             try {
@@ -373,11 +386,6 @@ const MatterScene: React.FC<Props> = ({
         // resize handler: rebuild world (keeps things simple)
         const handleResize = () => {
             Composite.clear(engine.world, false); // keep engine, remove bodies
-            // re-create shapes (DOM may have moved/resized)
-            bodiesRef.current.rects = createRectangles();
-            bodiesRef.current.circles = createCircles();
-            bodiesRef.current.pills = createPills();
-            createBoundaries();
             // update renderer size safely
             try {
                 if (render) {

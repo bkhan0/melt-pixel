@@ -96,8 +96,6 @@ export const CircleExpand: React.FC = () => {
                 });
             },
         });
-
-        return () => mm.revert(); // clean up matchMedia listeners
     }, []);
 
     return (

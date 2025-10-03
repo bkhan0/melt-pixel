@@ -104,7 +104,6 @@ export default function Home() {
 
         return () => {
             clearTimeout(timeout);
-            mm.revert(); // clean up
         };
     }, []);
 
