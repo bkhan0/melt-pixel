@@ -14,7 +14,7 @@ export const CircleExpand: React.FC = () => {
     useEffect(() => {
         if (!pinRef.current || !orangeRef.current || !textRef.current) return;
 
-        const mm = ScrollTrigger.matchMedia({
+        const _mm = ScrollTrigger.matchMedia({
             // Mobile (<768px)
             "(max-width: 767px)": () => {
                 gsap.to(orangeRef.current!, {

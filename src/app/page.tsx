@@ -16,19 +16,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const title_ref = useRef<HTMLHeadingElement>(null);
-    const gravityElements = [
-        { id: 1, type: 'rectangle' as const, text: 'Hello' },
-        { id: 2, type: 'circle' as const, text: 'Gravity' },
-        { id: 3, type: 'pill' as const, text: 'Fun!' },
-        // Add more elements here
-    ];
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
         if (!title_ref.current) return;
 
-        const mm = ScrollTrigger.matchMedia({
+        const _mm = ScrollTrigger.matchMedia({
             // Mobile: default (<768px)
             "(max-width: 767px)": () => {
                 gsap.set(title_ref.current!, {

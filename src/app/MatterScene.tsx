@@ -61,7 +61,9 @@ const MatterScene: React.FC<Props> = ({
             // ensure gravity is on so things fall
             try {
                 engine.world.gravity.y = 0.8;
-            } catch (e) { /* ignore */ }
+            } catch (e: unknown) {
+                console.log(e);
+            }
 
             // create renderer
             render = Render.create({
@@ -313,11 +315,11 @@ const MatterScene: React.FC<Props> = ({
                             }) as EventListener;
                             el.addEventListener("touchend", touchEnd);
                         }                    }
-                } catch (err) {
-                    // non-fatal if we couldn't adjust touch handlers
+                } catch (err: unknown) {
+                    console.log(err)
                 }
             } catch (err) {
-                // ignore safe
+                console.log(err)
             }
 
             // sync DOM positions after each physics update
