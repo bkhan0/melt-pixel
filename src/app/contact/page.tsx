@@ -1,14 +1,76 @@
-import Link from "next/link";
+"use client"
 import Footer from "@/app/footer";
+import {useState} from "react";
+
+type FormData = {
+    name: string;
+    email: string;
+    phone: string;
+    company: string;
+    budget: string;
+    subject: string;
+    message: string;
+};
 
 export default function Contact () {
     const links: Links[] = [
         { title: 'Facebook', url: '#' },
-        { title: 'Twitter', url: '#' },
         { title: 'LinkedIn', url: '#' },
         { title: 'Instagram', url: '#' },
-        { title: 'Behance', url: '#' },
     ]
+
+    const [form, setForm] = useState<FormData>({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        budget: "",
+        subject: "",
+        message: "",
+    });
+
+    const [status, setStatus] = useState<string | null>(null);
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("Sending...");
+
+        try {
+            const res = await fetch("/api/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (res.ok) {
+                setStatus("✅ Message sent successfully!");
+                setForm({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    company: "",
+                    budget: "",
+                    subject: "",
+                    message: "",
+                });
+            } else {
+                const { error } = await res.json();
+                setStatus(`❌ Failed to send: ${error}`);
+            }
+        } catch (err) {
+            console.error(err);
+            setStatus("❌ Something went wrong. Try again later.");
+        }
+    };
+
+
     return (
         <>
             <div>
@@ -53,24 +115,78 @@ export default function Contact () {
 
                         </div>
                         <div className="col-span-8 md:col-span-6 md:pl-40 px-4 md:px-0">
-                            <form>
+                            <form onSubmit={handleSubmit} className="relative">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14 mt-12 md:mt-0">
-                                    <input type="text" name="name"
-                                               placeholder="Name"    className="outline-none border-b-1 pb-2 text-sm" />
-                                    <input type="text" name="email"
-                                               placeholder="Email"   className="outline-none border-b-1 pb-2 text-sm" />
-                                    <input type="text" name="phone"
-                                               placeholder="Phone"   className="outline-none border-b-1 pb-2 text-sm" />
-                                    <input type="text" name="company"
-                                               placeholder="Company" className="outline-none border-b-1 pb-2 text-sm" />
-                                    <input type="text" name="budget"
-                                               placeholder="Budget"  className="outline-none border-b-1 pb-2 text-sm" />
-                                    <input type="text" name="subject"
-                                               placeholder="Subject" className="outline-none border-b-1 pb-2 text-sm" />
-                                    <textarea name="message"
-                                               placeholder="Message" className="outline-none border-b-1 pb-2 text-sm col-span-1 md:col-span-2 mt-16" />
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder="Name"
+                                        value={form.name}
+                                        onChange={handleChange}
+                                        className="outline-none border-b pb-2 text-sm bg-transparent"
+                                        required
+                                    />
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        value={form.email}
+                                        onChange={handleChange}
+                                        className="outline-none border-b pb-2 text-sm bg-transparent"
+                                        required
+                                    />
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        placeholder="Phone"
+                                        value={form.phone}
+                                        onChange={handleChange}
+                                        className="outline-none border-b pb-2 text-sm bg-transparent"
+                                    />
+                                    <input
+                                        type="text"
+                                        name="company"
+                                        placeholder="Company"
+                                        value={form.company}
+                                        onChange={handleChange}
+                                        className="outline-none border-b pb-2 text-sm bg-transparent"
+                                    />
+                                    <input
+                                        type="text"
+                                        name="budget"
+                                        placeholder="Budget"
+                                        value={form.budget}
+                                        onChange={handleChange}
+                                        className="outline-none border-b pb-2 text-sm bg-transparent"
+                                    />
+                                    <input
+                                        type="text"
+                                        name="subject"
+                                        placeholder="Subject"
+                                        value={form.subject}
+                                        onChange={handleChange}
+                                        className="outline-none border-b pb-2 text-sm bg-transparent"
+                                    />
+                                    <textarea
+                                        name="message"
+                                        placeholder="Message"
+                                        value={form.message}
+                                        onChange={handleChange}
+                                        className="outline-none border-b pb-2 text-sm bg-transparent col-span-1 md:col-span-2 mt-16"
+                                        required
+                                    />
                                 </div>
-                                <button type="submit" className="text-lg px-10 py-4 bg-white text-black rounded-full mt-16 cursor-pointer">Send Message</button>
+
+                                <button
+                                    type="submit"
+                                    className="text-lg px-10 py-4 bg-white text-black rounded-full mt-16 cursor-pointer hover:bg-gray-100 transition"
+                                >
+                                    Send Message
+                                </button>
+
+                                {status && (
+                                    <p className="mt-6 text-sm text-center text-gray-300">{status}</p>
+                                )}
                             </form>
                         </div>
                     </div>

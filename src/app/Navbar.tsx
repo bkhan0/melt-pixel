@@ -53,14 +53,14 @@ export const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8 text-white px-8 py-2 ml-1">
                 <Link href="/" className="hover:text-gray-300 transition">Home</Link>
-                <div className="relative group">
+               {/* <div className="relative group">
                     <button className="hover:text-gray-300">Services</button>
                     <div className="absolute left-0 mt-2 w-48 bg-gray-900 text-white shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out">
                         <Link href="#" className="block px-4 py-2 hover:bg-gray-800">Web Development</Link>
                         <Link href="#" className="block px-4 py-2 hover:bg-gray-800">App Development</Link>
                         <Link href="#" className="block px-4 py-2 hover:bg-gray-800">SEO Optimization</Link>
                     </div>
-                </div>
+                </div>*/}
                 <Link href="/contact" className="hover:text-gray-300 transition">Contact</Link>
                 <Link href="/about-us" className="hover:text-gray-300 transition">About Us</Link>
             </div>

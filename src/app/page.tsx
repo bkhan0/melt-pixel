@@ -113,32 +113,21 @@ export default function Home() {
       <div className="">
         <section className="container h-[100vh] mx-auto px-6 pt-32">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-            <div className="md:col-span-8 flex pr-10 lg:pr-32">
+            <div className="md:col-span-8 flex pr-10 xl:pr-32">
               <div className="flex flex-col">
-                <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
-                <span className="-ms-4 my-2 h-22">
-                  <p>Contact Now</p>
+                <span className="border border-gray-900 border-t-0 border-b-0 h-28 w-3"></span>
+                <span className="-ms-4 my-2 h-22 flex justify-center content-center">
                   <Image
                     alt="Melt-Pixel"
                     src={logo}
-                    width={90}
-                    height={90}
+                    width={160}
                     className="object-contain"
                   />
                 </span>
-                <span className="border border-t-0 border-b-0 h-24 w-[5px]"></span>
+                <span className="border border-gray-900 border-t-0 border-b-0 h-28 w-3"></span>
               </div>
-              <h1 className="text-5xl md:text-6xl font-semibold leading-none ml-10 md:ml-14 lg:ml-28 items-center gap-2">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-none ml-10 md:ml-14 lg:ml-28 items-center gap-2">
                 Let&apos;s sharpen your brand with
-                <span className="inline-flex w-8 h-8">
-                  <Image
-                    alt="Melt-Pixel"
-                    src={logo}
-                    width={90}
-                    height={90}
-                    className="object-contain"
-                  />
-                </span>
                 quality work
               </h1>
             </div>
@@ -256,34 +245,37 @@ export default function Home() {
                   <MatterScene containerHeightClass="h-[600px]" className="overflow-hidden">
 
                       <div className="dm-matter-elem-pill absolute left-20 md:left-12 -top-[2100px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
-                          Trello
+                          NextJS
                       </div>
                       <div className="dm-matter-elem-pill absolute left-8 md:left-20 -top-[2400px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
-                          Nike
+                          PHP
                       </div>
                       <div className="dm-matter-elem-pill absolute left-20 md:left-80 -top-[1900px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
-                          Adidas
+                          MySQL
                       </div>
                       <div className="dm-matter-elem-pill absolute left-12 md:left-80 -top-[2000px] px-10 py-4 text-xl bg-white rounded-full text-black">
-                          ThinkPad
+                          PostgreSQL
                       </div>
                       <div className="dm-matter-elem-pill absolute left-16 md:left-150 -top-[1500px] px-10 py-4 text-xl bg-white rounded-full text-black">
-                          Asus Rocks
+                          Supabase
                       </div>
                       <div className="dm-matter-elem-pill absolute left-20 md:left-180 -top-[900px] px-10 py-4 text-xl bg-white rounded-full text-black">
-                          Acer
+                          NodeJS
                       </div>
                       <div className="dm-matter-elem-pill absolute left-16 md:left-200 -top-[1300px] px-10 py-4 text-xl bg-white rounded-full text-black">
-                          Mac Book
+                          React
                       </div>
                       <div className="dm-matter-elem-pill absolute left-6 md:left-230 -top-[2800px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
-                          HyperX
+                          HTML
                       </div>
                       <div className="dm-matter-elem-pill absolute left-4 md:left-140 -top-[3000px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
-                          ThinkBook
+                          TailWind
+                      </div>
+                      <div className="dm-matter-elem-pill absolute left-4 md:left-140 -top-[3000px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
+                          Laravel
                       </div>
                       <div className="dm-matter-elem-pill absolute left-240 -top-[200px] px-10 py-4 text-xl bg-[var(--red)] rounded-full text-white">
-                          AttackShark
+                          Bootstrap
                       </div>
                   </MatterScene>
               </div>
