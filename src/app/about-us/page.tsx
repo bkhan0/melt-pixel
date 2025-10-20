@@ -1,10 +1,10 @@
 "use client"
 import Footer from "@/app/footer";
 
-import team1 from "@/../public/team-1.webp";
+import team1 from "@/../public/co-founder-and-ceo.webp";
 import team2 from "@/../public/team-2.webp";
 import team3 from "@/../public/team-3.webp";
-import team4 from "@/../public/team-4.webp";
+import team4 from "@/../public/co-founder-and-ceo-2.webp";
 import team5 from "@/../public/team-5.webp";
 import team6 from "@/../public/team-6.webp";
 import team7 from "@/../public/team-7.webp";
@@ -25,6 +25,7 @@ import {ScrollTrigger} from "gsap/all";
 import Marquee from "@/app/Marquee";
 import Link from "next/link";
 import {ArrowUpRight} from "lucide-react";
+import Lenis from "@studio-freight/lenis";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -32,10 +33,10 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Contact () {
 
     const teamData: Team[] = [
-        {name: "James David", image: team1, role: "CEO & Founder"},
-        {name: "Brenda C. Janet", image: team2, role: "Lead Developer"},
-        {name: "Martin Carlos", image: team3, role: "Lead Designer"},
-        {name: "Garry J. Coburn", image: team4, role: "Project Manager"}
+        {name: "Maw an Saleem", image: team1, role: "CEO & Co Founder"},
+        {name: "Shamoil Khan", image: team4, role: "UI/UX"},
+        {name: "Bari Khan", image: team1, role: "Lead Developer"},
+        {name: "Haider Bhai", image: team4, role: "CEO & Co Founder"}
     ]
 
     const team: Team[] = [
@@ -74,6 +75,25 @@ export default function Contact () {
     const sliderRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const lenis = new Lenis({
+            lerp: 0.08,         // lower = heavier inertia (e.g. 0.05 = more delay)
+            duration: 2,      // optional: sets scroll duration for uniform motion
+            wheelMultiplier: 2, // scroll speed factor
+            touchMultiplier: 2, // makes touch scroll feel natural
+            infinite: false,    // set true for infinite scroll pages
+        });
+
+        // connect Lenis with GSAP ScrollTrigger
+        function raf(time: number) {
+            lenis.raf(time);
+            ScrollTrigger.update();
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // optional: listen to scroll
+        lenis.on("scroll", ScrollTrigger.update);
+
         if (sliderRef.current) {
             gsap.to(sliderRef.current, {
                 x: -300, // move left 100px
@@ -104,7 +124,7 @@ export default function Contact () {
                         </div>
                         <div className="col-span-8 lg:col-span-6">
                             <h1 className="text-5xl md:text-7xl font-semibold">
-                                Crafting digital products with a unique — vision of making user experience better.
+                                Crafting digital products with a unique vision — focused on creating better, more meaningful user experiences.
                             </h1>
                         </div>
                         <div className="col-span-8 lg:col-span-2" />
@@ -120,11 +140,10 @@ export default function Contact () {
                                 </div>
                                 <div className="col-span-5 md:col-span-3 text-lg">
                                     <p>
-                                        Redox is the first and only creative agency for your real exploration. It’s one private place to save everything you can realize about digital beautifully design.
-                                    </p>
+                                        MeltPixel is a global creative agency built for bold ideas and real innovation.
+                                        We’re a dedicated space for brands to explore, design, and create digital experiences that inspire.                                    </p>
                                     <p className="my-8">
-                                        As a global creative agency, we understand the importance of staying ahead of the game. That’s why we partner with some of the world’s best talent to bring fresh ideas
-                                    </p>
+                                        With a network of world-class talent, we stay ahead of the curve — delivering fresh ideas and powerful results for clients around the world.                                    </p>
                                     <button className="relative overflow-hidden rounded-full border border-white bg-white px-10 py-4 group">
                                         {/* Default text */}
                                         <span className="relative z-10 block transform transition-all duration-500 ease-in-out group-hover:-translate-y-full group-hover:opacity-0 text-black">
@@ -216,7 +235,7 @@ export default function Contact () {
                                 <p>Who are we?</p>
                             </div>
                             <div className="col-span-4 lg:col-span-3 xl:col-span-2">
-                                <h2 className="text-6xl lg:text-7xl">We deliver creative ideas to a crowded world.</h2>
+                                <h2 className="text-6xl lg:text-7xl font-medium">We deliver creative ideas that stand out in a crowded world.</h2>
                             </div>
                             <div className="col-span-4 xl:col-span-1" />
                             <div className="col-span-4 lg:col-span-1 rounded-4xl px-10 py-16 bg-gray-900">
@@ -237,7 +256,9 @@ export default function Contact () {
                             </div>
                         </div>
                         <div className="flex items-center justify-center text-center mb-16 mt-50">
-                            <p className="w-[330px] text-lg text-white">Help to brands growing up and show their success stories to the world</p>
+                            <p className="w-[330px] text-lg text-white font-medium">
+                                Helping brands grow and share their success stories with the world.
+                            </p>
                         </div>
                         <Marquee duration={100} containerClassName="h-40 my-24">
                             <span className="flex items-center justify-center rounded-full border border-gray-700 w-42 h-28 text-2xl mx-0 lg:mx-10">
@@ -262,7 +283,9 @@ export default function Contact () {
                             </div>
                             <div className="col-span-12 lg:col-span-5">
                                 <div className="bg-gray-950 w-full h-[98%] flex flex-col justify-between px-10 py-18">
-                                    <p className="w-[60%] text-2xl font-semibold">Collaborate with a super down-to-earth, mad-talented team</p>
+                                    <p className="w-[60%] text-2xl font-semibold">
+                                        A collective of creative minds working on incredible projects and building lasting partnerships that go beyond the deliverable.
+                                    </p>
                                     <div>
                                         <p className="text-gray-700 w-[70%] mt-8">A collective bunch working on incredible projects and building enduring partnerships that extend well beyond the deliverable.</p>
                                         <button className="relative font-semibold mt-10 overflow-hidden rounded-full border border-gray-700 bg-transparent px-10 py-6 group">
@@ -285,7 +308,9 @@ export default function Contact () {
                                 <p>Awards</p>
                             </div>
                             <div className="col-span-12 lg:col-span-9">
-                                <h1 className="text-6xl font-semibold leading-tight lg:text-7xl">We believe in quality, not quantity, that’s why we’re great ever.</h1>
+                                <h1 className="text-6xl font-medium leading-tight lg:text-7xl">
+                                    We believe in quality over quantity — that’s what makes us truly great.
+                                </h1>
                             </div>
                             <div className="col-span-12 lg:col-span-3"></div>
                             <div className="col-span-12 lg:col-span-9">
@@ -368,7 +393,7 @@ export default function Contact () {
                             </div>
                             <div className="col-span-4 mt-8 lg:mt-0 xl:col-span-2">
                                 <h1 className={"text-6xl lg:text-7xl font-bold"}>
-                                    Meet the talented squad, behind the creativity
+                                    Meet the talented team behind the creativity.
                                 </h1>
                             </div>
                             <div className="col-span-full my-24">
@@ -392,6 +417,7 @@ export default function Contact () {
 
                             </div>
                         </div>
+{/*
                         <section>
                             <ul className="divide-y divide-slate-200 dark:divide-slate-700">
                                 {team.map((member, i) => (
@@ -399,7 +425,7 @@ export default function Contact () {
                                         key={i}
                                         className="grid grid-cols-12 items-center gap-x-4 py-8 group"
                                     >
-                                       {/* First column: image + name */}
+                                        First column: image + name
                                         <div className="col-span-8 lg:col-span-4 flex items-center gap-3 hover:pl-4 transition-all duration-400 group-hover:pl-6">
                                             <Image
                                                 src={member.image}
@@ -408,7 +434,7 @@ export default function Contact () {
                                             />
                                             <span className="font-semibold text-xl text-slate-800 dark:text-slate-200">
                                                 {member.name}
-                                                {/* Second column: role */}
+                                                 Second column: role
                                                 <span className="block lg:hidden text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">
                                                     {member.role}
                                                 </span>
@@ -416,13 +442,13 @@ export default function Contact () {
                                         </div>
 
 
-                                        {/* Second column: role */}
+                                         Second column: role
                                         <div className="hidden lg:block col-span-4 text-slate-500 dark:text-slate-400 whitespace-nowrap">
                                             {member.role}
                                         </div>
 
 
-                                        {/* Third column: link with arrow */}
+                                         Third column: link with arrow
                                         <Link href={"#"} className="col-span-4 justify-self-end p-2 hover:pr-4 transition-all duration-400 group-hover:pr-6">
                                             <ArrowUpRight className="w-8 h-8" />
                                         </Link>
@@ -430,6 +456,7 @@ export default function Contact () {
                                 ))}
                             </ul>
                         </section>
+*/}
                     </div>
                 </div>
             </div>

@@ -19,13 +19,13 @@ function Footer() {
     </div>
     <div className="col-span-12 md:col-span-5">
         <p className="mt-6 text-gray-400 max-w-md text-xl">
-        Malt Pixel is a startup digital agency of design, development and marketing that works friendly with global clients.
+            Melt Pixel is a creative digital agency for design, development, and marketing, partnering with brands across the globe.
       </p>
       <a
         href="#"
         className="relative inline-block text-gray-400 transition-colors text-2xl duration-300 group"
         >
-        <span className="relative z-10 group-hover:text-gray-300">info@MaltPixel.com</span>
+        <span className="relative z-10 group-hover:text-gray-300">info@MeltPixel.com</span>
         <span
             className="absolute bottom-0 left-0 w-full h-[1px] bg-gray-400
                     transform scale-x-0 origin-right transition-transform duration-300

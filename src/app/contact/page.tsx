@@ -1,6 +1,8 @@
 "use client"
 import Footer from "@/app/footer";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Lenis from "@studio-freight/lenis";
+import {ScrollTrigger} from "gsap/all";
 
 type FormData = {
     name: string;
@@ -70,6 +72,26 @@ export default function Contact () {
         }
     };
 
+    useEffect(() => {
+        const lenis = new Lenis({
+            lerp: 0.08,         // lower = heavier inertia (e.g. 0.05 = more delay)
+            duration: 2,      // optional: sets scroll duration for uniform motion
+            wheelMultiplier: 2, // scroll speed factor
+            touchMultiplier: 2, // makes touch scroll feel natural
+            infinite: false,    // set true for infinite scroll pages
+        });
+
+        // connect Lenis with GSAP ScrollTrigger
+        function raf(time: number) {
+            lenis.raf(time);
+            ScrollTrigger.update();
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // optional: listen to scroll
+        lenis.on("scroll", ScrollTrigger.update);
+    }, []);
 
     return (
         <>
@@ -82,15 +104,15 @@ export default function Contact () {
                             <p>Contact</p>
                         </div>
                         <div className="col-span-8 md:col-span-4">
-                            <h1 className="text-6xl md:text-7xl font-semibold">
-                                Let’s drop us a line and get the project started.
+                            <h1 className="text-6xl md:text-7xl font-medium">
+                                Drop us a line — let’s bring your project to life.
                             </h1>
                         </div>
                         <div className="col-span-8 md:col-span-2"></div>
                         <div className="col-span-8 md:col-span-2 px-4 md:px-0">
                             <p>Get in touch</p>
                             <p className="mb-2 mt-8 font-semibold text-2xl">
-                                We’re excited to hear from you and let’s start something special together
+                                We’re excited to hear from you — let’s start something special together.
                             </p>
                             <a href="#" className="relative inline-block
                                 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-white
