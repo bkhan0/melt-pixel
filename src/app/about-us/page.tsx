@@ -2,8 +2,9 @@
 import Footer from "@/app/footer";
 
 import team1 from "@/../public/co-founder-and-ceo.webp";
-import team2 from "@/../public/team-2.webp";
-import team3 from "@/../public/team-3.webp";
+import team2 from "@/../public/shamoilkhan.jpeg";
+import team3 from "@/../public/barikhan.jpeg";
+import teamMember from "@/../public/team-5.jpeg";
 import team4 from "@/../public/co-founder-and-ceo-2.webp";
 import team5 from "@/../public/team-5.webp";
 import team6 from "@/../public/team-6.webp";
@@ -34,18 +35,18 @@ export default function Contact () {
 
     const teamData: Team[] = [
         {name: "Maw an Saleem", image: team1, role: "CEO & Co Founder"},
-        {name: "Shamoil Khan", image: team4, role: "UI/UX"},
-        {name: "Bari Khan", image: team1, role: "Lead Developer"},
+        {name: "Shamoil Khan", image: team2, role: "UI/UX"},
+        {name: "Bari Khan", image: team3, role: "Lead Developer"},
         {name: "Haider Bhai", image: team4, role: "CEO & Co Founder"}
     ]
 
     const team: Team[] = [
         {
-            name: "Ana Dina Belić",
-            role: "Graphic Designer",
-            image: team5
+            name: "Unkown",
+            role: "3D Game Designer",
+            image: teamMember
         },
-        {
+       /* {
             name: "Giuseppe Carbonara",
             role: "Brand Strategist",
             image: team6
@@ -69,7 +70,7 @@ export default function Contact () {
             name: "Samuel Bertain",
             role: "WordPress Developer",
             image: team10
-        },
+        },*/
     ];
 
     const sliderRef = useRef<HTMLDivElement>(null);
@@ -404,7 +405,9 @@ export default function Contact () {
                                                 <Image
                                                     src={member.image}
                                                     alt={member.image.src}
-                                                    className="object-cover w-full transform transition-transform duration-500 hover:scale-110"
+                                                    className="object-cover h-full grayscale hover:grayscale-0 transform duration-500
+                                                     transition tansition-duration-400
+                                                     hover:scale-110"
                                                 />
                                             </Link>
                                             <Link href="#" className="mt-6 mb-2">
@@ -417,7 +420,7 @@ export default function Contact () {
 
                             </div>
                         </div>
-{/*
+
                         <section>
                             <ul className="divide-y divide-slate-200 dark:divide-slate-700">
                                 {team.map((member, i) => (
@@ -425,7 +428,6 @@ export default function Contact () {
                                         key={i}
                                         className="grid grid-cols-12 items-center gap-x-4 py-8 group"
                                     >
-                                        First column: image + name
                                         <div className="col-span-8 lg:col-span-4 flex items-center gap-3 hover:pl-4 transition-all duration-400 group-hover:pl-6">
                                             <Image
                                                 src={member.image}
@@ -434,21 +436,16 @@ export default function Contact () {
                                             />
                                             <span className="font-semibold text-xl text-slate-800 dark:text-slate-200">
                                                 {member.name}
-                                                 Second column: role
                                                 <span className="block lg:hidden text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">
                                                     {member.role}
                                                 </span>
                                             </span>
                                         </div>
 
-
-                                         Second column: role
                                         <div className="hidden lg:block col-span-4 text-slate-500 dark:text-slate-400 whitespace-nowrap">
                                             {member.role}
                                         </div>
 
-
-                                         Third column: link with arrow
                                         <Link href={"#"} className="col-span-4 justify-self-end p-2 hover:pr-4 transition-all duration-400 group-hover:pr-6">
                                             <ArrowUpRight className="w-8 h-8" />
                                         </Link>
@@ -456,7 +453,7 @@ export default function Contact () {
                                 ))}
                             </ul>
                         </section>
-*/}
+
                     </div>
                 </div>
             </div>

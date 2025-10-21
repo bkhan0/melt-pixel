@@ -2,12 +2,14 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useEffect, useRef } from "react";
+import SplitText from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 export const Timeline = () => {
     const titleRef = useRef<HTMLDivElement>(null);
-
+    const act_ref = useRef<HTMLHeadingElement>(null);
     useEffect(() => {
         // pin the title (left side)
         if (titleRef.current) {
@@ -20,6 +22,23 @@ export const Timeline = () => {
                     pinSpacing: false,
                     scrub: 1,
                 },
+            });
+        }
+
+        if (act_ref.current){
+            const split_act = new SplitText(act_ref.current, { type: "chars" });
+
+            gsap.from(split_act.chars, {
+                opacity: 0,
+                y: 80,
+                stagger: 0.05,
+                duration: 1.2,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: act_ref.current,
+                    start: "top 80%",
+
+                }
             });
         }
 
@@ -59,7 +78,7 @@ export const Timeline = () => {
                 <div className="ms-4 md:ms-0 flex flex-col md:flex-row">
                     {/* Left side (pinned title) */}
                     <div ref={titleRef} className="md:w-[46%]">
-                        <h1 className="text-7xl pinned-text lg:text-8xl font-bold">
+                        <h1 className="text-7xl pinned-text lg:text-8xl font-bold" ref={act_ref}>
                             Perfect <br /> —activity
                         </h1>
                     </div>

@@ -13,17 +13,35 @@ import {Timeline} from "@/app/Timeline";
 import {CircleExpand} from "@/app/CircleExpand";
 import MatterScene from "@/app/MatterScene";
 import Lenis from "@studio-freight/lenis";
+import SplitText from "gsap/SplitText";
+
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText)
 
 export default function Home() {
   const title_ref = useRef<HTMLHeadingElement>(null);
+    const heading_ref = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+
+        const split = new SplitText(heading_ref.current, { type: "chars" });
+
+        gsap.from(split.chars, {
+            opacity: 0,
+            y: 80,
+            stagger: 0.05,
+            duration: 1.2,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: heading_ref.current,
+                start: "top 80%",
+
+            }
+        });
 
         const lenis = new Lenis({
             lerp: 0.08,         // lower = heavier inertia (e.g. 0.05 = more delay)
-            duration: 2,      // optional: sets scroll duration for uniform motion
+            duration: 2,        // optional: sets scroll duration for uniform motion
             wheelMultiplier: 2, // scroll speed factor
             touchMultiplier: 2, // makes touch scroll feel natural
             infinite: false,    // set true for infinite scroll pages
@@ -121,6 +139,7 @@ export default function Home() {
             clearTimeout(timeout);
             ScrollTrigger.killAll();
             lenis.destroy();
+            split.revert()
         };
     }, []);
 
@@ -207,7 +226,7 @@ export default function Home() {
                  muted
                  playsInline
              >
-                 <source src="/group-meeting.mp4" type="video/mp4" />
+                 <source src="/melted-pixel.mp4" type="video/mp4" />
                  Your browser does not support the video tag.
              </video>
          </div>
@@ -232,7 +251,7 @@ export default function Home() {
                  <Projects />
              </div>
              <div className="container mx-auto mt-20">
-                 <h1 className="text-6xl md:text-9xl ml-5 md:ms-0 leading-none font-semibold pb-10 pt-20">
+                 <h1 className="text-6xl md:text-9xl ml-5 md:ms-0 leading-none font-semibold pb-10 pt-20" ref={heading_ref}>
                      Complex <br /> proficiency
                  </h1>
                  <div>
