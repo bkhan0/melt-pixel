@@ -1,19 +1,20 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import Marquee from "./Marquee";
-import Projects from "./Projects";
-import Services from "./Services";
+import Marquee from "./_components/Marquee";
+import Projects from "./_components/Projects";
+import Services from "./_components/Services";
 import logo from "../../public/meltpixel.png";
 import parallex from "../../public/ax-parallax-image-01.webp";
-import Footer from "./footer";
+import Footer from "./_components/footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import {Timeline} from "@/app/Timeline";
-import {CircleExpand} from "@/app/CircleExpand";
-import MatterScene from "@/app/MatterScene";
+import {Timeline} from "@/app/_components/Timeline";
+import {CircleExpand} from "@/app/_components/CircleExpand";
+import MatterScene from "@/app/_components/MatterScene";
 import Lenis from "@studio-freight/lenis";
 import SplitText from "gsap/SplitText";
+import {VideoScroll} from "@/app/_components/video-scroll";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText)
@@ -21,25 +22,8 @@ gsap.registerPlugin(SplitText)
 export default function Home() {
     const title_ref = useRef<HTMLHeadingElement>(null);
     const heading_ref = useRef<HTMLHeadingElement>(null);
-    const video_ref = useRef<HTMLVideoElement>(null);
-    const video_container_ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-
-            const section = video_container_ref.current;
-            const video = video_ref.current;
-            const video_duration: number = 5;
-            gsap.to(video, {
-                currentTime: video_duration,
-                ease: "none",
-                scrollTrigger:{
-                    trigger: section,
-                    start: "bottom bottom",
-                    scrub: 1,
-                    pin: true
-                }
-            })
-
 
         const split = new SplitText(heading_ref.current, { type: "chars" });
 
@@ -133,7 +117,7 @@ export default function Home() {
                     { fontSize: "320px", top: "-70vh" },
                     {
                         fontSize: "100px",
-                        top: "8vh",
+                        top: "10vh",
                         color: "white",
                         ease: "power2.inOut",
                         scrollTrigger: {
@@ -145,6 +129,8 @@ export default function Home() {
                 );
             },
         });
+
+        ScrollTrigger.refresh();
 
         // Refresh ScrollTrigger after mount
         const timeout = setTimeout(() => {
@@ -235,17 +221,7 @@ export default function Home() {
                  </div>
              </div>
          </div>
-         <div ref={video_container_ref} className="h-[70vh] md:h-[100vh]">
-             <video
-                 ref={video_ref}
-                 className="w-full h-full object-cover"
-                 muted
-                 playsInline
-             >
-                 <source src="/melted-pixel.mp4" type="video/mp4" />
-                 Your browser does not support the video tag.
-             </video>
-         </div>
+        <VideoScroll />
          <Marquee duration={100}>
              <span>Creative</span>
              <span className="w-2.5 h-2.5 mx-8 mb-1 rounded-full bg-white inline-block" />

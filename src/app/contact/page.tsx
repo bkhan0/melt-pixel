@@ -1,5 +1,5 @@
 "use client"
-import Footer from "@/app/footer";
+import Footer from "@/app/_components/footer";
 import {useEffect, useState} from "react";
 import Lenis from "@studio-freight/lenis";
 import {ScrollTrigger} from "gsap/all";

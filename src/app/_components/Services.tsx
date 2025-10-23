@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
 import Image, { StaticImageData } from 'next/image'
-import p1 from "../../public/ax-service-01.webp"
-import p2 from "../../public/ax-service-02.webp"
-import p3 from "../../public/ax-service-03.webp"
-import p4 from "../../public/ax-service-04.webp"
+import p1 from "../../../public/ax-service-01.webp"
+import p2 from "../../../public/ax-service-02.webp"
+import p3 from "../../../public/ax-service-03.webp"
+import p4 from "../../../public/ax-service-04.webp"
 import gsap from "gsap";
 
 interface Data {
@@ -58,7 +58,7 @@ function Services() {
                     ease: "power2.out",
                     scrollTrigger: {
                         trigger: el,
-                        start: "top 90%",
+                        start: "top 80%",
                         end: "top top",
                         scrub: true,
                     },

@@ -1,5 +1,5 @@
 "use client"
-import Footer from "@/app/footer";
+import Footer from "@/app/_components/footer";
 
 import team1 from "@/../public/co-founder-and-ceo.webp";
 import team2 from "@/../public/shamoilkhan.jpeg";
@@ -23,7 +23,7 @@ import Image, {StaticImageData} from "next/image";
 import {useEffect, useRef} from "react";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/all";
-import Marquee from "@/app/Marquee";
+import Marquee from "@/app/_components/Marquee";
 import Link from "next/link";
 import {ArrowUpRight} from "lucide-react";
 import Lenis from "@studio-freight/lenis";

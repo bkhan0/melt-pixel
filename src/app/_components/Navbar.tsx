@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/../public/meltpixel.png";
+import logo from "../../../public/meltpixel.png";
 import Link from "next/link";
 
 export const Navbar = () => {
@@ -42,7 +42,7 @@ export const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center">
           <div className="rounded-full">
-            <Link href="/">
+            <Link href="/public">
                 <Image
                     src={logo}
                     alt="MeltPixel"
@@ -52,7 +52,7 @@ export const Navbar = () => {
           </div>
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8 text-white px-8 py-2 ml-1">
-                <Link href="/" className="hover:text-gray-300 transition">Home</Link>
+                <Link href="/public" className="hover:text-gray-300 transition">Home</Link>
                {/* <div className="relative group">
                     <button className="hover:text-gray-300">Services</button>
                     <div className="absolute left-0 mt-2 w-48 bg-gray-900 text-white shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out">
@@ -102,7 +102,7 @@ export const Navbar = () => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="absolute top-16 left-0 right-0 bg-gray-900/80 backdrop-blur-lg text-white px-6 py-6 space-y-4 shadow-xl"
           >
-            <Link href="/" className="block hover:text-gray-300">Home</Link>
+            <Link href="/public" className="block hover:text-gray-300">Home</Link>
             <div>
               <button
                 onClick={() => setServicesOpen(!servicesOpen)}

@@ -1,16 +1,16 @@
 "use client";
 import Image, { StaticImageData } from "next/image";
 
-import p1 from "../../public/ax-portfolio-01.webp";
-import p2 from "../../public/ax-portfolio-02.webp";
-import p3 from "../../public/ax-portfolio-03.webp";
-import p4 from "../../public/ax-portfolio-04.webp";
-import p5 from "../../public/ax-portfolio-05.webp";
-import p6 from "../../public/ax-portfolio-06.webp";
+import p1 from "../../../public/ax-portfolio-05.webp";
+import p2 from "../../../public/ax-portfolio-02.jpeg";
+import p3 from "../../../public/ax-portfolio-03.jpeg";
+import p4 from "../../../public/ax-portfolio-04.jpeg";
+import p5 from "../../../public/ax-portfolio-05.jpeg";
+import p6 from "../../../public/ax-portfolio-01.jpeg";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Projects() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
@@ -58,7 +58,7 @@ export default function Projects() {
               src={project.img}
               alt={project.title}
               height={400}
-              className="rounded-2xl object-cover w-full"
+              className="rounded-2xl object-cover w-full h-[540px]"
             />
             <h2 className="mt-4 text-xl font-semibold">{project.title}</h2>
             <span className="text-sm text-gray-400">

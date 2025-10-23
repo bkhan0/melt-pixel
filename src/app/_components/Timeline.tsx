@@ -18,8 +18,7 @@ export const Timeline = () => {
                     trigger: titleRef.current,
                     start: "top 30%",
                     end: "bottom center",
-                    pin: true,
-                    pinSpacing: false,
+                    pin:true,
                     scrub: 1,
                 },
             });
@@ -82,7 +81,6 @@ export const Timeline = () => {
                             Perfect <br /> —activity
                         </h1>
                     </div>
-
                     {/* Right side stats */}
                     <div className="pb-10 md:pb-44 z-10 md:w-[54%]">
                         <div className="stat-block pb-10 md:pb-44 md:w-[60%] z-10 pe-10">

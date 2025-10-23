@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from "next/image";
-import logo from "@/../public/MeltPixel icon.jpeg"
+import logo from "../../../public/MeltPixel icon.jpeg"
 
 function Footer() {
   return (
@@ -74,7 +74,7 @@ function Footer() {
   <div>
     <h3 className="mb-3 font-semibold text-xl text-gray-300">Social</h3>
     <ul className="space-y-2 text-lg group">
-      {["Facebook", "Twitter", "Dribbble", "Instagram", "Pinterest", "YouTube"].map((item) => (
+      {["Facebook", "Twitter", "Instagram"].map((item) => (
         <li
           key={item}
           className="text-gray-300 group-hover:text-gray-500 hover:text-gray-300 transition-colors duration-300"
