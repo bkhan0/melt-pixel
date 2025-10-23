@@ -19,10 +19,27 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText)
 
 export default function Home() {
-  const title_ref = useRef<HTMLHeadingElement>(null);
+    const title_ref = useRef<HTMLHeadingElement>(null);
     const heading_ref = useRef<HTMLHeadingElement>(null);
+    const video_ref = useRef<HTMLVideoElement>(null);
+    const video_container_ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+
+            const section = video_container_ref.current;
+            const video = video_ref.current;
+            const video_duration: number = 5;
+            gsap.to(video, {
+                currentTime: video_duration,
+                ease: "none",
+                scrollTrigger:{
+                    trigger: section,
+                    start: "bottom bottom",
+                    scrub: 1,
+                    pin: true
+                }
+            })
+
 
         const split = new SplitText(heading_ref.current, { type: "chars" });
 
@@ -116,7 +133,7 @@ export default function Home() {
                     { fontSize: "320px", top: "-70vh" },
                     {
                         fontSize: "100px",
-                        top: "10vh",
+                        top: "8vh",
                         color: "white",
                         ease: "power2.inOut",
                         scrollTrigger: {
@@ -218,11 +235,10 @@ export default function Home() {
                  </div>
              </div>
          </div>
-         <div className="h-[70vh] md:h-[100vh]">
+         <div ref={video_container_ref} className="h-[70vh] md:h-[100vh]">
              <video
+                 ref={video_ref}
                  className="w-full h-full object-cover"
-                 autoPlay
-                 loop
                  muted
                  playsInline
              >

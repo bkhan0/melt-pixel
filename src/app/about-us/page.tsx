@@ -42,7 +42,7 @@ export default function Contact () {
 
     const team: Team[] = [
         {
-            name: "Unkown",
+            name: "Fahad Ikhlaq",
             role: "3D Game Designer",
             image: teamMember
         },
