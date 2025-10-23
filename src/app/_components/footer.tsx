@@ -89,7 +89,7 @@ function Footer() {
   <div>
     <h3 className="mb-3 font-semibold text-xl text-gray-300">Office</h3>
     <ul className="space-y-2 text-lg group">
-      {["New York", "Toronto", "Berlin", "London"].map((item) => (
+      {["Lahore"].map((item) => (
         <li
           key={item}
           className="text-gray-300 group-hover:text-gray-500 hover:text-gray-300 transition-colors duration-300"
