@@ -117,7 +117,7 @@ export default function Contact () {
         <>
             <div>
                 <div className="container px-4 lg:px-0 mx-auto pt-40 text-white">
-                    <h1 className="text-7xl md:text-8xl lg:text-[168px] xl:text-[216px] whitespace-nowrap font-extrabold text-center">SINCE 2012</h1>
+                    <h1 className="text-7xl md:text-8xl lg:text-[168px] xl:text-[216px] whitespace-nowrap font-extrabold text-center">SINCE 2025</h1>
                     <div className="h-[1px] bg-gray-900 w-full my-28"></div>
                     <div className="grid grid-cols-8 space-y-12 md:space-y-20 px-4 md:px-0">
                         <div className="col-span-8 lg:col-span-2">
@@ -236,7 +236,7 @@ export default function Contact () {
                                 <p>Who are we?</p>
                             </div>
                             <div className="col-span-4 lg:col-span-3 xl:col-span-2">
-                                <h2 className="text-6xl lg:text-7xl font-medium">We deliver creative ideas that stand out in a crowded world.</h2>
+                                <h2 className="text-6xl lg:text-7xl font-semibold">We deliver creative ideas that stand out in a crowded world.</h2>
                             </div>
                             <div className="col-span-4 xl:col-span-1" />
                             <div className="col-span-4 lg:col-span-1 rounded-4xl px-10 py-16 bg-gray-900">
@@ -245,15 +245,15 @@ export default function Contact () {
                             </div>
                             <div className="col-span-4 lg:col-span-1 rounded-4xl px-10 py-16 bg-gray-900">
                                 <p className="text-gray-600 text-lg">Clients world-wide</p>
-                                <h5 className="text-4xl mt-4">1.8K</h5>
+                                <h5 className="text-4xl mt-4">50+</h5>
                             </div>
                             <div className="col-span-4 lg:col-span-1 rounded-4xl px-10 py-16 bg-gray-900">
                                 <p className="text-gray-600 text-lg">Completed projects</p>
-                                <h5 className="text-4xl mt-4">1.7K</h5>
+                                <h5 className="text-4xl mt-4">50+</h5>
                             </div>
                             <div className="col-span-4 lg:col-span-1 rounded-4xl px-10 py-16 bg-gray-900">
                                 <p className="text-gray-600 text-lg">Client satisfaction</p>
-                                <h5 className="text-4xl mt-4">95%</h5>
+                                <h5 className="text-4xl mt-4">100%</h5>
                             </div>
                         </div>
                         <div className="flex items-center justify-center text-center mb-16 mt-50">
@@ -305,20 +305,21 @@ export default function Contact () {
                                 </div>
                             </div>
                             <div className="col-span-12 bg-gray-900 h-[1px] my-16"></div>
-                            <div className="col-span-12 lg:col-span-3">
+                           {/* <div className="col-span-12 lg:col-span-3">
                                 <p>Awards</p>
-                            </div>
-                            <div className="col-span-12 lg:col-span-9">
-                                <h1 className="text-6xl font-medium leading-tight lg:text-7xl">
+                            </div>*/}
+                            <div className="col-span-12 text-center">
+                                <h1 className="text-6xl font-semibold leading-tight lg:text-7xl">
                                     We believe in quality over quantity — that’s what makes us truly great.
                                 </h1>
                             </div>
-                            <div className="col-span-12 lg:col-span-3"></div>
+                            {/*<div className="col-span-12 lg:col-span-3"></div>*/}
                             <div className="col-span-12 lg:col-span-9">
-                                <div className="bg-gray-900 h-[1px] my-16"></div>
+                                {/*<div className="bg-gray-900 h-[1px] my-16"></div>*/}
+{/*
                                 <div className="lg:w-[60%] ml-auto">
                                     <div className="space-y-10 text-lg">
-                                        {/* Awwwards */}
+                                         Awwwards
                                         <div className="grid grid-cols-[200px_1fr_80px] gap-1">
                                             <span className="font-semibold">Awwwards</span>
                                             <span>7x Honorable Mention</span>
@@ -341,7 +342,7 @@ export default function Contact () {
                                             <span>2025</span>
                                         </div>
 
-                                        {/* CSS Design */}
+                                         CSS Design
                                         <div className="grid grid-cols-[200px_1fr_80px] gap-1">
                                             <span className="font-semibold">CSS Design</span>
                                             <span>2x Website of the Day</span>
@@ -360,7 +361,7 @@ export default function Contact () {
                                             <span>2019</span>
                                         </div>
 
-                                        {/* Dribbble */}
+                                         Dribbble
                                         <div className="grid grid-cols-[200px_1fr_80px] gap-1">
                                             <span className="font-semibold">Dribbble</span>
                                             <span>2x Design of the Day</span>
@@ -371,7 +372,7 @@ export default function Contact () {
                                             <span>2016</span>
                                         </div>
 
-                                        {/* Behance */}
+                                         Behance
                                         <div className="grid grid-cols-[200px_1fr_80px] gap-1">
                                             <span className="font-semibold">Behance</span>
                                             <span>5x Featured Design</span>
@@ -380,6 +381,7 @@ export default function Contact () {
                                     </div>
 
                                 </div>
+*/}
                             </div>
 
                         </div>

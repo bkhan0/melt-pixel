@@ -16,9 +16,8 @@ type FormData = {
 
 export default function Contact () {
     const links: Links[] = [
-        { title: 'Facebook', url: '#' },
-        { title: 'LinkedIn', url: '#' },
-        { title: 'Instagram', url: '#' },
+        { title: 'Facebook', url: "https://www.facebook.com/profile.php?id=61582796040988" },
+        { title: 'Instagram', url: "https://www.instagram.com/meltpixel/" },
     ]
 
     const [form, setForm] = useState<FormData>({
@@ -119,12 +118,12 @@ export default function Contact () {
                                 after:w-full after:origin-left after:scale-x-100 after:transition-transform after:duration-300
                                 hover:after:scale-x-0 text-2xl"
                             >
-                                hello@redoxagency.com
+                                contect@meltpixel.com
                             </a>
 
                             <p className="mt-20 mb-8">Follow</p>
                             {links.map((link) => (<>
-                                <a key={link.title} href={link.url}
+                                <a key={link.title} href={link.url} target={"_blank"}
                                     className="relative inline-block text-2xl text-white
                                        after:content-[''] after:absolute after:left-0 after:bottom-0
                                        after:h-[2px] after:bg-white after:w-full after:origin-left
