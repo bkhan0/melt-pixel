@@ -1,7 +1,9 @@
 "use client"
 import {useEffect, useRef} from "react";
-
+import {ScrollTrigger} from "gsap/all";
 import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger)
 
 export const VideoScroll = () => {
 
@@ -9,26 +11,51 @@ export const VideoScroll = () => {
     const video_container_ref = useRef<HTMLDivElement>(null);
 
 
+
     useEffect(() => {
+        const video_duration = 5;
 
-        const video_duration: number = 5;
-        if(video_container_ref.current) {
-            gsap.to(video_ref.current, {
-                currentTime: video_duration,
-                scrollTrigger:{
-                    trigger: video_container_ref.current,
-                    start: "bottom bottom",
-                    scrub:1,
-                    pin: true,
-                }
-            })
-        }
+        ScrollTrigger.matchMedia({
+            // Large screens (>= 1024px)
+            "(min-width: 1024px)": () => {
+                const tween = gsap.to(video_ref.current, {
+                    currentTime: video_duration,
+                    scrollTrigger: {
+                        trigger: video_container_ref.current,
+                        start: "top top",
+                        scrub: 1,
+                        pin: true,
+                    },
+                });
+                return () => {
+                    tween.scrollTrigger?.kill();
+                    tween.kill();
+                };
+            },
 
+            // Small screens (< 1024px)
+            "(max-width: 1023px)": () => {
+                const tween = gsap.to(video_ref.current, {
+                    currentTime: video_duration,
+                    scrollTrigger: {
+                        trigger: video_container_ref.current,
+                        start: "top 60%",
+                        scrub: 1,
+                        pin: false,
+                    },
+                });
+                return () => {
+                    tween.scrollTrigger?.kill();
+                    tween.kill();
+                };
+            },
+        });
+
+        return () => ScrollTrigger.killAll();
     }, []);
-
     return (
         <>
-            <div ref={video_container_ref} className="h-[70vh] md:h-[100vh]">
+            <div ref={video_container_ref} className="h-[35vh] md:h-[50vh] lg:h-[100vh]">
                 <video
                     ref={video_ref}
                     className="w-full h-full object-cover"

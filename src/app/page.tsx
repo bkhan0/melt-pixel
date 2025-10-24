@@ -5,7 +5,7 @@ import Marquee from "./_components/Marquee";
 import Projects from "./_components/Projects";
 import Services from "./_components/Services";
 import logo from "../../public/meltpixel.png";
-import parallex from "../../public/ax-parallax-image-01.webp";
+import parallex from "../../public/envato-labs-image-edit2.png";
 import Footer from "./_components/footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -66,7 +66,7 @@ export default function Home() {
             "(max-width: 767px)": () => {
                 gsap.set(title_ref.current!, {
                     fontSize: "50px",
-                    top: "6vh",
+                    top: "4vh",
                     color: "white",
                 });
             },
@@ -78,7 +78,7 @@ export default function Home() {
                     { fontSize: "150px", top: "-55vh" },
                     {
                         fontSize: "70px",
-                        top: "5vh",
+                        top: "3vh",
                         color: "white",
                         ease: "power2.inOut",
                         scrollTrigger: {
@@ -98,7 +98,7 @@ export default function Home() {
                     { fontSize: "200px", top: "-65vh" },
                     {
                         fontSize: "80px",
-                        top: "10vh",
+                        top: "8vh",
                         color: "white",
                         ease: "power2.inOut",
                         scrollTrigger: {
@@ -117,7 +117,7 @@ export default function Home() {
                     { fontSize: "320px", top: "-70vh" },
                     {
                         fontSize: "100px",
-                        top: "10vh",
+                        top: "6vh",
                         color: "white",
                         ease: "power2.inOut",
                         scrollTrigger: {

@@ -98,7 +98,7 @@ function Footer() {
       {["LGF-9 Central Plaza Main Boulevard Garden Town Lahore "].map((item) => (
         <li
           key={item}
-          className="text-gray-300 group-hover:text-gray-500 hover:text-gray-300 transition-colors duration-300 w-[300px]"
+          className="text-gray-300 group-hover:text-gray-500 hover:text-gray-300 transition-colors duration-300 max-w-[300px]"
         >
           {item}
         </li>
