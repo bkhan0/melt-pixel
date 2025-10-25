@@ -71,7 +71,7 @@ export default function Home() {
                     color: "white",
                 });
 
-                gsap.set(title_ref.current.parentElement?.parentElement!, {
+                gsap.set(title_ref.current!.parentElement!.parentElement!, {
                     minHeight: "80vh",
                 });
 
@@ -80,7 +80,7 @@ export default function Home() {
             // iPhone XR (414px)
             "(max-width: 420px) and ( min-width:396px)": () => {
 
-                gsap.set(title_ref.current.parentElement?.parentElement!, {
+                gsap.set(title_ref.current!.parentElement!.parentElement!, {
                     minHeight: "60vh",
                 });
             },
