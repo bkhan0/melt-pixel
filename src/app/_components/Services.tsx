@@ -90,7 +90,7 @@ function Services() {
       </div>
 
       {/* Image */}
-      <div className="col-span-12 md:col-span-6 xl:col-span-5 service-card-image  w-full ps-10 h-64 relative">
+      <div className="col-span-12 md:col-span-6 lg:col-span-5 service-card-image  w-full ps-10 h-64 relative">
         <Image
           src={item.img}
           alt={item.category}

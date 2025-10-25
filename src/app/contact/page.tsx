@@ -103,7 +103,7 @@ export default function Contact () {
                             <p>Contact</p>
                         </div>
                         <div className="col-span-8 md:col-span-4">
-                            <h1 className="text-6xl md:text-7xl font-medium">
+                            <h1 className="text-6xl md:text-7xl font-semibold">
                                 Drop us a line — let’s bring your project to life.
                             </h1>
                         </div>
@@ -113,13 +113,20 @@ export default function Contact () {
                             <p className="mb-2 mt-8 font-semibold text-2xl">
                                 We’re excited to hear from you — let’s start something special together.
                             </p>
-                            <a href="#" className="relative inline-block
+                            <a href="mailto:hello@MeltPixel.com" className="relative inline-block my-2
                                 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-white
                                 after:w-full after:origin-left after:scale-x-100 after:transition-transform after:duration-300
                                 hover:after:scale-x-0 text-2xl"
                             >
-                                contect@meltpixel.com
+                                hello@MeltPixel.com
                             </a>
+                            <p className="relative inline-block
+                                after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-white
+                                after:w-full after:origin-left after:scale-x-100 after:transition-transform after:duration-300
+                                hover:after:scale-x-0 text-2xl"
+                            >
+                                +92 309 71717787
+                            </p>
 
                             <p className="mt-20 mb-8">Follow</p>
                             {links.map((link) => (<>

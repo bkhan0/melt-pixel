@@ -10,7 +10,7 @@ import {LucideIcon} from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="text-gray-300 justify-between pt-10">
+    <footer className="text-gray-300 justify-between pt-16">
   {/* Top Section */}
   <div className="container mx-auto w-full px-6 pt-28 pb-24 grid grid-cols-12 gap-y-10 md:gap-12">
     {/* Left: Logo + Description */}
@@ -31,7 +31,7 @@ function Footer() {
         href="#"
         className="relative inline-block text-gray-400 transition-colors text-2xl duration-300 group"
         >
-        <span className="relative z-10 group-hover:text-gray-300">info@MeltPixel.com</span>
+        <span className="relative z-10 group-hover:text-gray-300">hello@MeltPixel.com</span>
         <span
             className="absolute bottom-0 left-0 w-full h-[1px] bg-gray-400
                     transform scale-x-0 origin-right transition-transform duration-300

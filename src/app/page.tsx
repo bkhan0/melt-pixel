@@ -61,9 +61,33 @@ export default function Home() {
 
         if (!title_ref.current) return;
 
-        const _mm = ScrollTrigger.matchMedia({
+        ScrollTrigger.matchMedia({
+
+            // iPhone SE (375px)
+            "(max-width: 395px)": () => {
+                gsap.set(title_ref.current!, {
+                    fontSize: "40px",
+                    top: "0vh",
+                    color: "white",
+                });
+
+                gsap.set(title_ref.current.parentElement?.parentElement!, {
+                    minHeight: "80vh",
+                });
+
+            },
+
+            // iPhone XR (414px)
+            "(max-width: 420px) and ( min-width:396px)": () => {
+
+                gsap.set(title_ref.current.parentElement?.parentElement!, {
+                    minHeight: "60vh",
+                });
+            },
+
+
             // Mobile: default (<768px)
-            "(max-width: 767px)": () => {
+            "(min-width: 396px) and (max-width: 767px)": () => {
                 gsap.set(title_ref.current!, {
                     fontSize: "50px",
                     top: "4vh",
@@ -75,10 +99,30 @@ export default function Home() {
             "(min-width: 768px) and (max-width: 1023px)": () => {
                 gsap.fromTo(
                     title_ref.current!,
-                    { fontSize: "150px", top: "-55vh" },
+                    { fontSize: "120px", top: "-55vh" },
                     {
                         fontSize: "70px",
                         top: "3vh",
+                        color: "white",
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: title_ref.current!,
+                            start: "top 50%",
+                            end: "top 10%",
+                            scrub: 2,
+                        },
+                    }
+                );
+            },
+
+            // Small/Medium screens (820px - 1023px) → md
+            "(min-width: 820px) and (max-width: 1023px)": () => {
+                gsap.fromTo(
+                    title_ref.current!,
+                    { fontSize: "135px", top: "-55vh" },
+                    {
+                        fontSize: "70px",
+                        top: "8vh",
                         color: "white",
                         ease: "power2.inOut",
                         scrollTrigger: {
@@ -95,10 +139,29 @@ export default function Home() {
             "(min-width: 1024px) and (max-width: 1279px)": () => {
                 gsap.fromTo(
                     title_ref.current!,
-                    { fontSize: "200px", top: "-65vh" },
+                    { fontSize: "180px", top: "-65vh" },
                     {
                         fontSize: "80px",
-                        top: "8vh",
+                        top: "7vh",
+                        color: "white",
+                        ease: "power2.inOut",
+                        scrollTrigger: {
+                            trigger: title_ref.current!,
+                            start: "top 50%",
+                            scrub: 1,
+                        },
+                    }
+                );
+            },
+
+            // Large screens (1024px - 1279px) → lg
+            "(min-width: 1280px) and (max-width: 1900px)": () => {
+                gsap.fromTo(
+                    title_ref.current!,
+                    { fontSize: "220px", top: "-45vh" },
+                    {
+                        fontSize: "80px",
+                        top: "7vh",
                         color: "white",
                         ease: "power2.inOut",
                         scrollTrigger: {
@@ -111,10 +174,10 @@ export default function Home() {
             },
 
             // Extra large screens (>=1280px) → xl
-            "(min-width: 1280px)": () => {
+            "(min-width: 1900px)": () => {
                 gsap.fromTo(
                     title_ref.current!,
-                    { fontSize: "320px", top: "-70vh" },
+                    { fontSize: "320px", top: "-66vh" },
                     {
                         fontSize: "100px",
                         top: "6vh",
@@ -151,7 +214,7 @@ export default function Home() {
     <div id={"smooth-wrapper"}>
      <div id={"smooth-content"}>
          <div>
-             <section className="container h-[100vh] mx-auto px-6 pt-32">
+             <section className="container min-h-[100vh] mx-auto px-6 pt-32">
                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                      <div className="md:col-span-8 flex pr-10 xl:pr-32">
                          <div className="flex flex-col">
@@ -164,8 +227,8 @@ export default function Home() {
                       className="object-contain"
                   />
                 </span>
-                             <span className="border border-gray-900 border-t-0 border-b-0 h-28 w-3"></span>
-                         </div>
+                 <span className="border border-gray-900 border-t-0 border-b-0 h-28 w-3"></span>
+                     </div>
                          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-none ml-10 md:ml-14 lg:ml-28 items-center gap-2">
                              Building brands that thrive in the digital age
                          </h1>
@@ -174,14 +237,14 @@ export default function Home() {
                      <aside className="md:col-span-4">
                          <div className="flex gap-4">
                              <div className="flex-1">
-                                 <div className="text-6xl lg:text-8xl font-medium">98%</div>
+                                 <div className="text-6xl lg:text-7xl xl:text-8xl font-medium">98%</div>
                                  <div className="text-md py-4 text-white">
                                      Average clients satisfied and repeating
                                  </div>
                              </div>
 
                              <div className="flex-1">
-                                 <div className="text-6xl lg:text-8xl font-medium">120+</div>
+                                 <div className="text-6xl lg:text-7xl xl:text-8xl font-medium">50+</div>
                                  <div className="text-md py-4 text-white">
                                      Successfully projects done in 24 countries
                                  </div>
@@ -197,23 +260,23 @@ export default function Home() {
              </section>
          </div>
          <div className="p-10 md:p-28 bg-black/90">
-             <div className="w-full h-[60vh] flex relative">
+             <div className="w-full min-h-[80vh] flex relative">
                  <span className="border-t-1 border-s-1 w-4 h-4 absolute top-0 start-0"></span>
                  <span className="border-t-1 border-e-1 w-4 h-4 absolute top-0 end-0"></span>
                  <span className="border-b-1 border-e-1 w-4 h-4 absolute bottom-0 end-0"></span>
                  <span className="border-b-1 border-s-1 w-4 h-4 absolute bottom-0 start-0"></span>
-                 <div className="mx-auto my-auto flex flex-col ">
+                 <div className="mx-auto my-auto flex flex-col">
                      <h1
-                         className="font-bold text-center text-[90px] md:text-[280px] absolute w-full z-10 whitespace-nowrap text-[var(--blue)]"
+                         className="font-bold text-center absolute w-full z-10 whitespace-nowrap text-[var(--blue)]"
                          ref={title_ref}
                      >
-                         Melt Pixel
+                         MeltPixel
                      </h1>
                      <h3 className="text-xl md:w-[50%] mx-auto text-center">
                          We’re a dynamic marketing agency dedicated to helping businesses amplify their brand presence through creativity, strategy, and innovation.
                          From digital marketing and branding to web development and creative strategy, we deliver impactful solutions that connect, engage, and inspire growth
                      </h3>
-                     <div className="mx-auto">
+                     <div className="mx-auto py-8">
                          <button className="-mb-28 bg-white text-black btn rounded-full w-40 h-14">
                              learn more
                          </button>
@@ -319,7 +382,7 @@ export default function Home() {
                  </h1>
              </div>
              <div
-                 className="h-[50vh] md:h-[80vh] bg-fixed bg-center bg-cover"
+                 className="h-[30vh] md:h-[50vh] bg-fixed bg-top bg-fill bg-no-repeat"
                  style={{ backgroundImage: `url(${parallex.src})` }}
              ></div>
              <Footer />

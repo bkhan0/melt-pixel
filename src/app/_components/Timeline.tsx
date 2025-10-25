@@ -91,7 +91,7 @@ export const Timeline = () => {
                         </div>
                         <div className="stat-block pb-10 md:pb-44 z-10 ml-0 md:ml-auto md:w-[40%]">
                             <h1 className="text-6xl md:text-8xl font-bold pb-4 leading-none">
-                                260+
+                                20+
                             </h1>
                             <p className="text-xl text-gray-500">
                                 Crafted responsive, user-centered website & app.

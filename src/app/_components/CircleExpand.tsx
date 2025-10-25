@@ -14,9 +14,13 @@ export const CircleExpand: React.FC = () => {
     useEffect(() => {
         if (!pinRef.current || !orangeRef.current || !textRef.current) return;
 
-        const _mm = ScrollTrigger.matchMedia({
-            // Mobile (<768px)
-            "(max-width: 767px)": () => {
+        ScrollTrigger.matchMedia({
+            // iphone se
+
+
+
+            "(max-width: 399px)": () => {
+
                 gsap.to(orangeRef.current!, {
                     scale: 5,
                     ease: "power1.out",
@@ -31,7 +35,34 @@ export const CircleExpand: React.FC = () => {
                 });
 
                 gsap.to(textRef.current!, {
-                    fontSize: "3rem",
+                    fontSize: "3.4rem",
+                    ease: "power1.out",
+                    scrollTrigger: {
+                        trigger: pinRef.current!,
+                        start: "top top",
+                        end: "+=1500",
+                        scrub: true,
+                    },
+                });
+            },
+
+            // Mobile (<768px)
+            "(max-width: 767px) and (min-width: 400px)": () => {
+                gsap.to(orangeRef.current!, {
+                    scale: 5,
+                    ease: "power1.out",
+                    scrollTrigger: {
+                        trigger: pinRef.current!,
+                        start: "top top",
+                        end: "+=1500",
+                        scrub: true,
+                        pin: true,
+                        pinSpacing: true,
+                    },
+                });
+
+                gsap.to(textRef.current!, {
+                    fontSize: "3.4rem",
                     ease: "power1.out",
                     scrollTrigger: {
                         trigger: pinRef.current!,
@@ -99,7 +130,7 @@ export const CircleExpand: React.FC = () => {
     }, []);
 
     return (
-        <div ref={pinRef} className="h-[100vh]">
+        <div ref={pinRef} className="min-h-[100vh]">
             <div className="relative flex items-center justify-center h-screen">
                 <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
                     <div
