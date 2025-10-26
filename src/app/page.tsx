@@ -382,7 +382,7 @@ export default function Home() {
                  </h1>
              </div>
              <div
-                 className="h-[30vh] md:h-[50vh] bg-fixed bg-top bg-fill bg-no-repeat"
+                 className="h-[30vh] md:h-[50vh] bg-fixed bg-top bg-contain bg-no-repeat"
                  style={{ backgroundImage: `url(${parallex.src})` }}
              ></div>
              <Footer />
