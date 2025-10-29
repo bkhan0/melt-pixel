@@ -34,7 +34,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Contact () {
 
     const teamData: Team[] = [
-        {name: "Maw an Saleem", image: team1, role: "CEO & Co Founder"},
+        {name: "Mawan Saleem", image: team1, role: "CEO & Co Founder"},
         {name: "Haider Mughal", image: team4, role: "CEO & Co Founder"},
         {name: "Shamoil Khan", image: team2, role: "UI/UX"},
         {name: "Bari Khan", image: team3, role: "Lead Developer"},
